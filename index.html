@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Archaeology of Architecture — A Field Catalog of Frozen Accidents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --soil:#14110d;
+    --soil-2:#1b1711;
+    --raise:#221d16;
+    --border:rgba(232,226,212,0.10);
+    --border-2:rgba(232,226,212,0.20);
+    --bone:#ece6d8;
+    --ink-mute:#a39b89;
+    --ink-faint:#6f6857;
+    --signal:#e0a23a;
+    --phys:#c2683f;   /* physical — rust */
+    --digi:#4f9e92;   /* digital — oxidized bronze */
+    --inst:#c2a24e;   /* institutional — brass */
+    --display:'Instrument Serif',Georgia,serif;
+    --body:'Spectral',Georgia,serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--soil);
+    color:var(--bone);
+    font-family:var(--body);
+    font-weight:300;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(900px 500px at 82% -8%, rgba(194,104,63,0.07), transparent 60%),
+      radial-gradient(800px 500px at -10% 120%, rgba(79,158,146,0.06), transparent 60%);
+  }
+
+  .wrap{max-width:1120px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- Eyebrow ---------- */
+  .eyebrow{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.22em;
+    text-transform:uppercase;color:var(--ink-faint);
+    padding-top:46px;
+  }
+  .eyebrow .dot{width:5px;height:5px;border-radius:50%;background:var(--signal);}
+  .eyebrow .div{flex:1;height:1px;background:var(--border);min-width:30px;}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:34px 0 26px;display:grid;grid-template-columns:64px 1fr;gap:34px;}
+  @media(max-width:760px){.hero{grid-template-columns:1fr;gap:18px;}}
+
+  /* core-sample motif */
+  .core{position:relative;border-left:1px solid var(--border-2);}
+  .core .strata{position:absolute;left:-1px;width:9px;top:0;bottom:0;
+    background:linear-gradient(var(--inst) 0 18%, var(--digi) 18% 52%, var(--phys) 52% 100%);
+    opacity:0.85;}
+  .core .tick{position:absolute;left:14px;font-family:var(--mono);font-size:9px;
+    letter-spacing:0.12em;color:var(--ink-faint);white-space:nowrap;}
+  .core .tick::before{content:"";position:absolute;left:-9px;top:0.5em;width:6px;height:1px;background:var(--ink-faint);}
+  @media(max-width:760px){.core{display:none;}}
+
+  h1.thesis{
+    font-family:var(--display);font-weight:400;font-style:italic;
+    font-size:clamp(40px,7.4vw,84px);line-height:0.96;letter-spacing:-0.015em;
+    margin:0 0 24px;color:var(--bone);
+  }
+  h1.thesis .reg{font-style:normal;color:var(--phys);}
+  h1.thesis .arch{font-style:normal;color:var(--digi);}
+
+  .epigraph{
+    border-left:2px solid var(--signal);padding:4px 0 4px 20px;margin:0 0 22px;
+    max-width:62ch;font-size:16.5px;color:var(--ink-mute);font-style:italic;
+  }
+  .epigraph .lead{color:var(--bone);font-style:normal;}
+  .standfirst{max-width:64ch;font-size:15.5px;color:var(--ink-mute);margin:0;}
+  .standfirst b{color:var(--bone);font-weight:400;}
+
+  /* ---------- Stat line ---------- */
+  .statline{
+    display:flex;flex-wrap:wrap;gap:34px;align-items:baseline;
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    margin:30px 0 0;padding:20px 0;
+  }
+  .stat .n{font-family:var(--display);font-style:italic;font-size:40px;line-height:0.9;color:var(--bone);}
+  .stat .l{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--ink-faint);margin-top:6px;}
+
+  /* ---------- Controls ---------- */
+  .controls{position:sticky;top:0;z-index:30;background:rgba(20,17,13,0.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+    margin-top:0;padding:16px 0 14px;}
+  .ctl-row{display:flex;flex-wrap:wrap;gap:10px 8px;align-items:center;}
+  .ctl-label{font-family:var(--mono);font-size:9.5px;letter-spacing:0.16em;
+    text-transform:uppercase;color:var(--ink-faint);margin-right:4px;}
+  .chip{
+    font-family:var(--mono);font-size:10.5px;letter-spacing:0.06em;
+    padding:5px 11px;border:1px solid var(--border-2);background:transparent;
+    color:var(--ink-mute);cursor:pointer;border-radius:2px;transition:all .15s;
+    text-transform:uppercase;line-height:1.3;
+  }
+  .chip:hover{color:var(--bone);border-color:var(--ink-mute);}
+  .chip.on{color:var(--soil);background:var(--ink-mute);border-color:var(--ink-mute);font-weight:500;}
+  .chip.on[data-dom="physical"]{background:var(--phys);border-color:var(--phys);color:#1a0f08;}
+  .chip.on[data-dom="digital"]{background:var(--digi);border-color:var(--digi);color:#06120f;}
+  .chip.on[data-dom="institutional"]{background:var(--inst);border-color:var(--inst);color:#161002;}
+  .ctl-spacer{flex:1;min-width:8px;}
+  .search{font-family:var(--mono);font-size:11px;background:var(--soil-2);
+    border:1px solid var(--border-2);color:var(--bone);padding:6px 11px;border-radius:2px;
+    width:200px;outline:none;}
+  .search::placeholder{color:var(--ink-faint);}
+  .search:focus{border-color:var(--signal);}
+  .ctl-row.sub{margin-top:10px;}
+  .count{font-family:var(--mono);font-size:10px;letter-spacing:0.1em;color:var(--ink-faint);}
+  .count b{color:var(--signal);font-weight:500;}
+
+  /* ---------- Records ---------- */
+  .records{padding:8px 0 40px;}
+  .rec{
+    display:grid;grid-template-columns:96px 1fr;gap:0;
+    border-top:1px solid var(--border);padding:26px 0;
+    opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s;
+  }
+  .rec.in{opacity:1;transform:none;}
+  .rec.hide{display:none;}
+  .rec:last-child{border-bottom:1px solid var(--border);}
+
+  .rec .depth{position:relative;padding-right:18px;}
+  .rec .depth .rail{position:absolute;right:0;top:4px;bottom:-26px;width:2px;background:currentColor;opacity:0.5;}
+  .rec:last-child .depth .rail{bottom:0;}
+  .rec[data-dom="physical"] .depth{color:var(--phys);}
+  .rec[data-dom="digital"] .depth{color:var(--digi);}
+  .rec[data-dom="institutional"] .depth{color:var(--inst);}
+  .rec .depth .yr{font-family:var(--display);font-style:italic;font-size:30px;line-height:0.92;color:var(--bone);}
+  .rec .depth .era{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:0.12em;
+    text-transform:uppercase;margin-top:6px;color:currentColor;}
+  .rec .depth .dom{display:block;font-family:var(--mono);font-size:8px;letter-spacing:0.14em;
+    text-transform:uppercase;margin-top:10px;color:var(--ink-faint);}
+
+  .rec .body{display:grid;grid-template-columns:1fr 1.18fr;gap:28px;}
+  @media(max-width:820px){
+    .rec{grid-template-columns:60px 1fr;}
+    .rec .depth .yr{font-size:22px;}
+    .rec .body{grid-template-columns:1fr;gap:14px;}
+  }
+
+  .rec .tagrow{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:9px;
+    font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;}
+  .rgn{padding:1px 6px;border:1px solid var(--border-2);color:var(--ink-mute);}
+  .typ{padding:1px 6px;border:1px dotted var(--border-2);color:var(--ink-faint);}
+  .legend-tag{padding:1px 6px;border:1px dashed var(--signal);color:var(--signal);}
+
+  .rec h2{font-family:var(--display);font-weight:400;font-size:25px;line-height:1.05;
+    letter-spacing:-0.01em;margin:0 0 8px;color:var(--bone);}
+  .rec .also{font-size:13.5px;color:var(--ink-faint);font-style:italic;margin:0;}
+
+  .beats{display:flex;flex-direction:column;gap:13px;}
+  .beat{display:grid;grid-template-columns:84px 1fr;gap:14px;align-items:baseline;}
+  @media(max-width:820px){.beat{grid-template-columns:74px 1fr;gap:10px;}}
+  .beat .k{font-family:var(--mono);font-size:8.5px;letter-spacing:0.13em;text-transform:uppercase;
+    color:var(--ink-faint);padding-top:3px;}
+  .beat .v{font-size:14.5px;color:var(--ink-mute);line-height:1.46;}
+  .beat .v b{color:var(--bone);font-weight:400;}
+  .beat.persist .v{color:var(--bone);}
+  .beat .myth{display:block;margin-top:6px;font-size:13px;color:var(--signal);font-style:italic;}
+
+  .empty{padding:60px 0;text-align:center;color:var(--ink-faint);font-style:italic;display:none;}
+  .empty.show{display:block;}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--border-2);padding:40px 0 70px;margin-top:10px;}
+  .closing{font-family:var(--display);font-style:italic;font-size:clamp(22px,3.4vw,32px);
+    line-height:1.18;max-width:30ch;color:var(--bone);margin:0 0 22px;}
+  .colophon{font-family:var(--mono);font-size:10px;letter-spacing:0.08em;color:var(--ink-faint);
+    line-height:1.9;max-width:70ch;}
+  .colophon a{color:var(--ink-mute);text-decoration:none;border-bottom:1px dotted var(--ink-faint);}
+  .colophon a:hover{color:var(--signal);}
+
+  :focus-visible{outline:2px solid var(--signal);outline-offset:2px;}
+  @media(prefers-reduced-motion:reduce){
+    *{scroll-behavior:auto;}
+    .rec{opacity:1 !important;transform:none !important;transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="eyebrow">
+    <span class="dot"></span>
+    <span>ponelson.github.io · Field Study No. 07</span>
+    <span class="div"></span>
+    <span>Path Dependence · Lock-In · Frozen Accidents</span>
+  </div>
+
+  <header class="hero">
+    <div class="core" aria-hidden="true">
+      <div class="strata"></div>
+      <span class="tick" style="top:6%">surface · now</span>
+      <span class="tick" style="top:30%">digital strata</span>
+      <span class="tick" style="top:64%">physical strata</span>
+      <span class="tick" style="top:94%">bedrock · antiquity</span>
+    </div>
+    <div>
+      <h1 class="thesis">To build <span class="arch">architecture</span> is to bury <span class="reg">archaeology</span>.</h1>
+      <blockquote class="epigraph">
+        <span class="lead">The dominant firm of a generation defines the substrate of the next.</span>
+        Better alternatives are foreclosed not because they are worse, but because switching costs exceed switching benefit. The market chooses a local maximum and entrenches it for a century.
+      </blockquote>
+      <p class="standfirst">Every design decision lays down a stratum. Some are deliberate; most are contingent — a full disk in 1971, a wartime wage cap, the width of a colliery wagon. The choice gets load-bearing, then permanent, then invisible. This is a field catalog of those strata: <b>the accidents we froze, the better roads we foreclosed, and the fossils still running underneath us.</b> Filter by layer or by region; sorted by depth — deepest, oldest freezes first.</p>
+    </div>
+  </header>
+
+  <div class="statline">
+    <div class="stat"><span class="n" id="stat-total">0</span><span class="l">Artifacts Cataloged</span></div>
+    <div class="stat"><span class="n" id="stat-span">—</span><span class="l">Span of Strata</span></div>
+    <div class="stat"><span class="n" id="stat-regions">0</span><span class="l">Regions of Origin</span></div>
+    <div class="stat"><span class="n" id="stat-legend">0</span><span class="l">Origin Myths Flagged</span></div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="ctl-row">
+      <span class="ctl-label">Layer</span>
+      <button class="chip on" data-filter="dom" data-val="all">All</button>
+      <button class="chip" data-filter="dom" data-val="physical" data-dom="physical">Physical</button>
+      <button class="chip" data-filter="dom" data-val="digital" data-dom="digital">Digital</button>
+      <button class="chip" data-filter="dom" data-val="institutional" data-dom="institutional">Institutional</button>
+      <span class="ctl-spacer"></span>
+      <input class="search" id="search" type="search" placeholder="search the dig…" aria-label="Search artifacts">
+    </div>
+    <div class="ctl-row sub">
+      <span class="ctl-label">Region</span>
+      <button class="chip on" data-filter="rgn" data-val="all">All</button>
+      <button class="chip" data-filter="rgn" data-val="GLOBAL">Global</button>
+      <button class="chip" data-filter="rgn" data-val="AMER">Americas</button>
+      <button class="chip" data-filter="rgn" data-val="CAN">Canada</button>
+      <button class="chip" data-filter="rgn" data-val="LATAM">Latin America</button>
+      <button class="chip" data-filter="rgn" data-val="EUR">Europe</button>
+      <button class="chip" data-filter="rgn" data-val="JPN">Japan</button>
+      <button class="chip" data-filter="rgn" data-val="KOR">Korea</button>
+      <button class="chip" data-filter="rgn" data-val="CHN">China</button>
+      <button class="chip" data-filter="rgn" data-val="IND">India</button>
+      <button class="chip" data-filter="rgn" data-val="AFR">Africa</button>
+      <button class="chip" data-filter="rgn" data-val="EURASIA">Eurasia</button>
+      <button class="chip" data-filter="rgn" data-val="OCE">Oceania</button>
+      <span class="ctl-spacer"></span>
+      <span class="count"><b id="count-n">0</b> / <span id="count-t">0</span> showing</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="records" id="records"></div>
+  <div class="empty" id="empty">Nothing at this depth. Loosen a filter to keep digging.</div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <p class="closing">The most expensive decisions are the ones nobody remembers making.</p>
+    <p class="colophon">
+      A field catalog of path dependence across the physical, digital, and institutional record. Sorted by freeze-date as depth: surface is now, bedrock is antiquity. Entries tagged <span style="color:var(--signal)">LEGEND</span> carry a romantic origin story that is apocryphal or contested — the myth is separated from the documented mechanism, because the path dependence is real either way. Compiled for <a href="https://ponelson.github.io">ponelson.github.io</a> · build v1.<br>
+      Reference, not gospel — dates mark the moment a choice became load-bearing, not always its first appearance.
+    </p>
+  </div>
+</footer>
+
+<script>
+const DATA = [
+  /* ============ PHYSICAL ============ */
+  { t:"Standard railway gauge — 1,435 mm", dom:"physical", yr:1846, era:"Gauge Act", rgn:["GLOBAL","EUR"], typ:"gauge", legend:true,
+    also:"4 ft 8½ in · the width of most of the world's track",
+    origin:"Britain's 1846 Gauge Act locked in George Stephenson's <b>4 ft 8½ in</b>, the width already used by the colliery wagonways he grew up around, and exported it down every line the British built.",
+    foreclosed:"Brunel's 7-ft broad gauge ran faster and steadier on the Great Western — and was torn up anyway, because the network had already standardized around the narrower track.",
+    persist:"Most of the planet's rail still runs at this width. The romantic claim that it descends from Roman chariot ruts (two horses abreast) is the part to be careful with.",
+    myth:"Myth: set by Roman horses' rumps. Mechanism: English colliery cart-tracks, standardized by statute." },
+
+  { t:"Iberian broad gauge — 1,668 mm", dom:"physical", yr:1855, era:"19th c.", rgn:["EUR"], typ:"gauge",
+    also:"Spain & Portugal · six Castilian feet",
+    origin:"Spain's engineers picked a wider gauge for the heavy locomotives they thought the steep terrain would demand.",
+    foreclosed:"Compatibility with the French (standard-gauge) network was foreclosed — a break-of-gauge sat at the Pyrenees for a century and a half.",
+    persist:"AVE high-speed lines had to be built fresh in standard gauge to reach Europe; the legacy network still needs gauge-changing axles at the border." },
+
+  { t:"Russian / Soviet gauge — 1,520 mm", dom:"physical", yr:1843, era:"19th c.", rgn:["EURASIA"], typ:"gauge",
+    also:"Russia, CIS, Mongolia, Finland (1,524)",
+    origin:"An American consultant advised a five-foot gauge for the first Moscow–St. Petersburg line; the empire then built everything to match.",
+    foreclosed:"Through-running with European standard gauge was foreclosed across a sixth of the Earth's landmass.",
+    persist:"Freight bogies are still swapped, or wheels re-gauged, at Brest and other western borders. Finland remains on the Tsarist width to this day." },
+
+  { t:"Cape gauge — 1,067 mm", dom:"physical", yr:1873, era:"Colonial era", rgn:["AFR","JPN","OCE"], typ:"gauge",
+    also:"Southern Africa · Japan · Indonesia · NZ · Queensland",
+    origin:"A cheap-to-build 3 ft 6 in narrow gauge was adopted at the Cape and spread across the colonial rail map as the budget default.",
+    foreclosed:"The capacity and speed of wider gauges were foreclosed in exchange for laying more cheap track faster.",
+    persist:"It still defines the mainline network of much of sub-Saharan Africa, Japan's legacy lines, and a string of former colonies." },
+
+  { t:"The Australian gauge muddle", dom:"physical", yr:1855, era:"19th c.", rgn:["OCE"], typ:"gauge",
+    also:"NSW standard · Victoria broad · Queensland narrow",
+    origin:"Each colony chose its own gauge before federation — and a contractor's switch of allegiance left New South Wales and Victoria on incompatible widths.",
+    foreclosed:"A single national network was foreclosed at birth; passengers changed trains at colonial borders for over a century.",
+    persist:"The break-of-gauge at Albury became a national embarrassment; standardization is still being retrofitted line by line." },
+
+  { t:"Japan: narrow legacy + the Shinkansen break", dom:"physical", yr:1872, era:"Meiji era", rgn:["JPN"], typ:"gauge",
+    also:"1,067 mm legacy vs 1,435 mm bullet train",
+    origin:"British advisors built Meiji Japan's first railways in cheap 1,067 mm narrow gauge, and the entire national network inherited it.",
+    foreclosed:"High-speed running on the legacy network was foreclosed; the 1964 Shinkansen had to be built as an entirely separate standard-gauge system.",
+    persist:"Japan now runs two parallel railroads — the slow narrow-gauge web and the standard-gauge bullet lines threaded around it." },
+
+  { t:"Mains frequency — 60 Hz vs 50 Hz", dom:"physical", yr:1891, era:"19th c.", rgn:["GLOBAL"], typ:"standard",
+    also:"Americas 60 · most of the world 50",
+    origin:"AEG in Germany settled on 50 Hz; American interests around Westinghouse landed on 60. Both were defensible; neither was inevitable.",
+    foreclosed:"A single global frequency was foreclosed, splitting motors, clocks, and grids into two incompatible electrical worlds.",
+    persist:"Every dual-voltage charger and every '50/60 Hz' label on the back of an appliance is a fossil of two 1890s engineering calls." },
+
+  { t:"Japan's 50/60 Hz fault line", dom:"physical", yr:1896, era:"19th c.", rgn:["JPN"], typ:"standard",
+    also:"Tokyo 50 Hz (German kit) · Osaka 60 Hz (US kit)",
+    origin:"Tokyo bought German AEG generators (50 Hz); Osaka bought American GE generators (60 Hz). The country's grid froze along that purchasing line.",
+    foreclosed:"A unified national grid was foreclosed; the two halves can only trade power through a handful of frequency converters.",
+    persist:"In the 2011 disaster, the west could barely send power east — the bottleneck was a procurement decision from the 1890s." },
+
+  { t:"Driving on the left", dom:"physical", yr:1773, era:"Pre-industrial", rgn:["GLOBAL","JPN","IND","AFR"], typ:"convention",
+    also:"~1/3 of the world · UK, Japan, India, S. Africa, Australia",
+    origin:"Older mounting and passing customs, then British road acts, fixed left-hand travel; the Empire exported it. The right-hand world largely traces to Napoleonic France and the US.",
+    foreclosed:"A single global handedness was foreclosed, leaving every land border between a left and a right country needing a crossover.",
+    persist:"Sweden switched sides overnight in 1967 (Dagen H); Samoa switched the other way in 2009 to import cheap used cars; Myanmar's 1970 switch left it driving right in mostly right-hand-drive cars." },
+
+  { t:"Electrical plugs & sockets — Types A–N", dom:"physical", yr:1904, era:"20th c.", rgn:["GLOBAL"], typ:"standard",
+    also:"a dozen-plus incompatible national patterns",
+    origin:"Each electrifying nation standardized its own plug before any international body existed, often around a domestic manufacturer's design.",
+    foreclosed:"A universal socket was foreclosed; the installed base of wall outlets in every building made later harmonization hopeless.",
+    persist:"The traveler's bag of adapters is pure archaeology — each prong shape a frozen national decision no one will rip out of the walls." },
+
+  { t:"The shipping container — ISO 668", dom:"physical", yr:1956, era:"20th c.", rgn:["GLOBAL"], typ:"standard",
+    also:"the 8-ft box · the TEU",
+    origin:"Malcolm McLean's corner-casting geometry won the standardization fight, and the world's freight collapsed onto one box.",
+    foreclosed:"Better-fitting dimensions were foreclosed once ships, cranes, chassis, and ports were all built to grip the same corner fittings.",
+    persist:"Container ships, gantry cranes, rail wells, and truck beds worldwide are sized to a 1950s box. The geometry now constrains the vessels, not the cargo." },
+
+  { t:"Pallets — ISO vs Euro vs 48×40", dom:"physical", yr:1961, era:"20th c.", rgn:["GLOBAL","EUR","AMER"], typ:"standard",
+    also:"1200×1000 · 1200×800 · 48×40 in",
+    origin:"Europe standardized the Euro-pallet (1200×800); North America entrenched the 48×40-inch GMA pallet. Each fit its own trucks and racking.",
+    foreclosed:"A single global footprint was foreclosed; goods get re-palletized at the boundary between systems.",
+    persist:"Warehouse racking, container loading math, and forklift tines on two continents are dimensioned around incompatible wooden rectangles." },
+
+  { t:"Paper size — A4 vs US Letter", dom:"physical", yr:1922, era:"20th c.", rgn:["GLOBAL","AMER","CAN"], typ:"standard",
+    also:"ISO 216 (√2 ratio) vs 8.5×11 in",
+    origin:"Germany's DIN standardized the elegant √2 A-series; the US and its trade neighbors kept the older Letter size.",
+    foreclosed:"A single document standard was foreclosed; cross-border printing, software defaults, and PDF templates forked permanently.",
+    persist:"North America (and parts of Latin America) still defaults to Letter while the rest of the world uses A4 — a quiet, daily incompatibility." },
+
+  { t:"Gregorian calendar — staggered adoption", dom:"physical", yr:1582, era:"Early modern", rgn:["GLOBAL"], typ:"convention",
+    also:"1582 · 1752 · 1918 · 1923 · 2016",
+    origin:"Catholic Europe reformed the calendar in 1582; everyone else converted on their own schedule, dropping different numbers of days.",
+    foreclosed:"A single shared date was foreclosed for centuries; Britain and its colonies lost eleven days in 1752, rioting over the 'stolen' time.",
+    persist:"Russia's October Revolution happened in November by the new reckoning; Saudi Arabia only adopted the Gregorian civil calendar in 2016; Ethiopia keeps its own, running ~7 years behind." },
+
+  { t:"China on a single time zone", dom:"physical", yr:1949, era:"20th c.", rgn:["CHN"], typ:"convention",
+    also:"five geographic zones, one official clock",
+    origin:"The new government set the whole country to Beijing time as an instrument of national unity.",
+    foreclosed:"Local solar alignment was foreclosed across a 5,000-km span; in the far west, official noon arrives with the morning.",
+    persist:"Xinjiang quietly runs an unofficial 'local time' two hours behind the clock on the wall — a fault line hidden inside a single time zone." },
+
+  { t:"India Standard Time — UTC+5:30", dom:"physical", yr:1906, era:"20th c.", rgn:["IND"], typ:"convention",
+    also:"one half-hour zone over 2,000 km",
+    origin:"British India fixed a single meridian for the whole subcontinent, splitting the difference with a half-hour offset.",
+    foreclosed:"Eastern alignment was foreclosed; the sun rises in Arunachal Pradesh nearly two hours before the official day begins.",
+    persist:"Assam's tea gardens keep an informal 'bagan time' an hour ahead; periodic proposals for a second zone die on the fear of fragmenting the nation." },
+
+  { t:"Metric holdouts & the unit gap", dom:"physical", yr:1875, era:"19th c.", rgn:["AMER","GLOBAL"], typ:"standard",
+    also:"US, Liberia, Myanmar · partial UK",
+    origin:"Most nations signed onto the metric system; a few large economies kept customary units deep in their infrastructure and law.",
+    foreclosed:"Frictionless engineering interchange was foreclosed at the seam between metric and imperial estates.",
+    persist:"NASA lost the Mars Climate Orbiter in 1999 to a metric/imperial mismatch; Britain still buys petrol in litres but measures the road in miles." },
+
+  { t:"The Jefferson grid — Public Land Survey", dom:"physical", yr:1785, era:"Founding era", rgn:["AMER"], typ:"cadastre",
+    also:"township & range vs metes-and-bounds",
+    origin:"The 1785 Land Ordinance imposed a rectangular survey grid on everything west of the original colonies, sight-unseen.",
+    foreclosed:"Terrain-following parcels were foreclosed; the grid marched over rivers and ridgelines regardless of the land underneath.",
+    persist:"The checkerboard of mile-square sections is visible from any window seat over the Midwest — and the tangled metes-and-bounds of the old colonies sit right beside it." },
+
+  { t:"Long-lot land — the seigneurial rang", dom:"physical", yr:1627, era:"New France", rgn:["CAN","AMER"], typ:"cadastre",
+    also:"Quebec & Louisiana riverfront strips",
+    origin:"New France divided land into narrow strips perpendicular to the river so every farm touched the water highway.",
+    foreclosed:"The square-grid logic that took the rest of North America was foreclosed wherever the French got there first.",
+    persist:"Fly over the St. Lawrence or the lower Mississippi and the ribbon-thin lots are still drawn into the modern cadastre, centuries after the canoes." },
+
+  { t:"The jōri grid of ancient Japan", dom:"physical", yr:700, era:"Nara period", rgn:["JPN"], typ:"cadastre",
+    also:"7th–8th c. field allotment system",
+    origin:"Imperial Japan laid a square grid over its rice land to allot and tax it under the ritsuryō system.",
+    foreclosed:"Organic field boundaries were foreclosed across the plains where the grid was enforced.",
+    persist:"Roads, paddies, and property lines in parts of the Kansai plain still trace a 1,300-year-old administrative grid." },
+
+  { t:"Roman roads under the modern map", dom:"physical", yr:-50, era:"Antiquity", rgn:["EUR"], typ:"network",
+    also:"Watling Street → the A5",
+    origin:"Rome surveyed the straightest practical line between strategic points and paved it; the alignment outlived the empire.",
+    foreclosed:"Later, gentler routes were foreclosed wherever towns, markets, and churches had already clustered on the Roman line.",
+    persist:"Major British and European highways still run dead-straight along roads laid out by legionary surveyors two thousand years ago." },
+
+  { t:"Broadway across the Manhattan grid", dom:"physical", yr:1811, era:"19th c.", rgn:["AMER"], typ:"network",
+    also:"the Wickquasgeck trail vs the Commissioners' Plan",
+    origin:"The 1811 plan imposed a rigid rectangular grid on Manhattan — but an older Lenape trail already ran diagonally up the island.",
+    foreclosed:"A perfectly orthogonal city was foreclosed by a footpath that predated the surveyors.",
+    persist:"Broadway still slices across the grid at an angle, and every place the diagonal meets the squares — Times Square, Union Square — is a scar of the old trail." },
+
+  { t:"Panamax — the canal that sized the ships", dom:"physical", yr:1914, era:"20th c.", rgn:["AMER","GLOBAL"], typ:"standard",
+    also:"original lock chamber dimensions",
+    origin:"The Panama Canal's 1914 lock chambers set a hard ceiling on ship beam and length; naval architects designed fleets to fit exactly.",
+    foreclosed:"Larger, more efficient hull forms were foreclosed for any vessel that needed the shortcut.",
+    persist:"'Panamax' defined ship design for a century; even the 2016 expansion just created a new frozen size — 'Neopanamax' — for the next one." },
+
+  { t:"The tatami module — sizing Japanese rooms", dom:"physical", yr:1650, era:"Edo period", rgn:["JPN"], typ:"convention",
+    also:"Kyoto-ma vs Edo-ma mat sizes",
+    origin:"Rooms were laid out as whole numbers of tatami mats, making the mat the unit of architecture itself.",
+    foreclosed:"Free-form room dimensions were foreclosed; the building had to be a multiple of the mat.",
+    persist:"Japanese apartments are still advertised in jō (mats), and a Kyoto mat is a different size from a Tokyo mat — a regional measurement schism baked into floor plans." },
+
+  { t:"The Tordesillas line", dom:"physical", yr:1494, era:"Age of discovery", rgn:["LATAM"], typ:"border",
+    also:"a meridian drawn by the Pope",
+    origin:"A 1494 treaty split the unexplored world between Spain and Portugal along a line of longitude in the Atlantic.",
+    foreclosed:"A Spanish-speaking continent was foreclosed east of the line — the bulge of South America fell to Portugal.",
+    persist:"It is why Brazil speaks Portuguese and its neighbors speak Spanish: a 500-year-old line on a map you can still hear in the language." },
+
+  { t:"Colonial straight-line borders", dom:"physical", yr:1885, era:"Scramble for Africa", rgn:["AFR"], typ:"border",
+    also:"the Berlin Conference partition",
+    origin:"European powers carved Africa into territories along lines of latitude and longitude drawn in distant conference rooms.",
+    foreclosed:"Borders following nations, languages, or watersheds were foreclosed; ethnic groups were split or forced together by ruler-straight lines.",
+    persist:"Many of today's conflicts and the awkward geometry of the African map descend directly from boundaries no African was in the room to draw." },
+
+  { t:"The 1/4-20 tripod thread", dom:"physical", yr:1898, era:"19th c.", rgn:["GLOBAL"], typ:"standard",
+    also:"an imperial screw on every camera",
+    origin:"Early camera makers settled on a quarter-inch, 20-threads-per-inch screw — a customary-unit thread — for the tripod mount.",
+    foreclosed:"A metric mount was foreclosed once the installed base of tripods and cameras locked the thread in.",
+    persist:"Every camera sold worldwide, metric countries included, still has an imperial thread tapped into its base." },
+
+  { t:"Penny survival vs coin abolition", dom:"physical", yr:2012, era:"21st c.", rgn:["CAN","AMER","OCE"], typ:"convention",
+    also:"Canada killed the cent; the US keeps it",
+    origin:"Several countries rounded away their smallest coins once minting cost more than face value; the US did not.",
+    foreclosed:"A clean retirement was foreclosed in the US by sentiment, lobbying, and the rounding fears of retailers.",
+    persist:"The American penny still costs more than a cent to make, decades after Canada, Australia, and New Zealand quietly retired theirs." },
+
+  /* ============ DIGITAL ============ */
+  { t:"x86 — the instruction set that wouldn't die", dom:"digital", yr:1978, era:"Microcomputer era", rgn:["GLOBAL"], typ:"architecture",
+    also:"8086 → IBM PC → forty years of compatibility",
+    origin:"Intel's 8086 (1978) won the IBM PC socket in 1981, and DOS-then-Windows binary compatibility turned a chip choice into a planetary standard.",
+    foreclosed:"Cleaner architectures were foreclosed for decades because the world's software was already compiled for x86.",
+    persist:"Modern CPUs still boot through a 1970s 'real mode' before they become themselves; only now are ARM (Apple Silicon, Graviton) finally prying the lock open." },
+
+  { t:"COBOL — the load-bearing ghost", dom:"digital", yr:1959, era:"Mainframe era", rgn:["GLOBAL"], typ:"language",
+    also:"banks, insurers, governments, the IRS",
+    origin:"COBOL was written in 1959 to make business code readable; it then quietly became the substrate of the world's financial and government records.",
+    foreclosed:"Migration off it was foreclosed by the cost and risk of rewriting systems no living engineer fully understands.",
+    persist:"Trillions of dollars move through COBOL daily; when state unemployment systems buckled in 2020, governments put out public calls for retired COBOL programmers." },
+
+  { t:"IPv4 — the address space that ran out", dom:"digital", yr:1981, era:"Early internet", rgn:["GLOBAL","AFR","IND"], typ:"protocol",
+    also:"32 bits · ~4.3 billion addresses",
+    origin:"A 1981 design fixed internet addresses at 32 bits — ample for a research network, fatal for a planetary one.",
+    foreclosed:"A graceful transition was foreclosed; NAT and carrier-grade NAT were bolted on to ration a space that should have been abandoned.",
+    persist:"Early entrants hoard enormous address blocks while latecomers in Asia and Africa, allocated scraps, were pushed onto IPv6 first — the scarcity map mirrors who showed up early." },
+
+  { t:"QWERTY", dom:"digital", yr:1874, era:"Typewriter era", rgn:["GLOBAL"], typ:"layout", legend:true,
+    also:"the layout that outlived its machine",
+    origin:"The QWERTY arrangement was tuned for the mechanics of the 1870s type-bar typewriter and for telegraph transcription — not, as legend says, to slow typists down.",
+    foreclosed:"Layouts claimed to be faster were foreclosed once a generation had trained its fingers and every keyboard shipped QWERTY.",
+    persist:"You are almost certainly reading this on a layout optimized for a machine that hasn't existed for a century.",
+    myth:"Myth: designed to slow you down. Mechanism: built to stop type-bars jamming and to suit Morse operators." },
+
+  { t:"Regional keyboard layouts", dom:"digital", yr:1907, era:"20th c.", rgn:["EUR","KOR"], typ:"layout",
+    also:"AZERTY · QWERTZ · Turkish-F · Dubeolsik",
+    origin:"Each language community froze its own layout early; France got AZERTY, the German world QWERTZ, Korea the Dubeolsik arrangement.",
+    foreclosed:"Demonstrably more efficient designs — the Turkish F-keyboard, the Korean Sebeolsik — were foreclosed by the layout people already knew.",
+    persist:"Turkey legislated an optimized keyboard and still lost to QWERTY habit; Korea's faster Sebeolsik remains a connoisseur's choice while Dubeolsik rules." },
+
+  { t:"ASCII, code pages, and Han unification", dom:"digital", yr:1963, era:"Early computing", rgn:["GLOBAL","CHN","JPN","KOR"], typ:"encoding",
+    also:"7-bit English → a tower of incompatible encodings",
+    origin:"ASCII fixed text as 7-bit American English in 1963; every other writing system then improvised its own incompatible code page — Shift-JIS, EUC-KR, GB, Big5.",
+    foreclosed:"A born-universal text standard was foreclosed; decades of garbled 'mojibake' followed wherever encodings collided.",
+    persist:"Unicode finally unified it — but its decision to merge visually-similar Chinese, Japanese, and Korean characters into shared code points still sparks the 'Han unification' grievance today." },
+
+  { t:"The /usr split — a full disk in 1971", dom:"digital", yr:1971, era:"Early Unix", rgn:["GLOBAL"], typ:"convention",
+    also:"why every Linux box has /usr",
+    origin:"Unix's authors filled their first disk and spilled the overflow onto a second one mounted at /usr. That accident became the filesystem layout.",
+    foreclosed:"A clean, designed directory hierarchy was foreclosed; the historical split calcified into a standard everyone copied.",
+    persist:"Every Linux and macOS system still carries the /usr, /bin, /etc structure born of a disk that ran out of room half a century ago." },
+
+  { t:"Windows' reserved names & drive letters", dom:"digital", yr:1981, era:"DOS era", rgn:["GLOBAL"], typ:"convention",
+    also:"CON, PRN, NUL · A:, C: · MAX_PATH",
+    origin:"DOS inherited device names and an A:/C: drive scheme from 1970s CP/M and the floppy-disk PCs of the early 1980s.",
+    foreclosed:"A clean namespace was foreclosed for the sake of running the previous decade's software unchanged.",
+    persist:"You still cannot name a file 'CON' on Windows because of a teletype device convention older than the PC — and the C: drive is named for floppies that are gone." },
+
+  { t:"The Year 2038 problem", dom:"digital", yr:1970, era:"Early Unix", rgn:["GLOBAL"], typ:"convention",
+    also:"32-bit time, counting from 1970",
+    origin:"Unix counts time as seconds since 1 January 1970 in a 32-bit signed integer — a choice made when 2038 was unimaginably far away.",
+    foreclosed:"A future-proof time representation was foreclosed by the memory economics of the era.",
+    persist:"On 19 January 2038 that counter overflows. Embedded systems still being installed today are quietly laying down a fresh layer of the same fossil." },
+
+  { t:"Two-digit years — the Y2K stratum", dom:"digital", yr:1965, era:"Mainframe era", rgn:["GLOBAL"], typ:"convention",
+    also:"storing '99' to save a byte",
+    origin:"When memory was measured in expensive kilobytes, programmers stored years as two digits. The saving was real; the century was assumed.",
+    foreclosed:"A robust date format was foreclosed by a rational cost decision that simply outlived its assumptions.",
+    persist:"Excavating and fixing that one shortcut cost an estimated hundreds of billions of dollars worldwide in the run-up to 2000." },
+
+  { t:"JavaScript — ten days, then forever", dom:"digital", yr:1995, era:"Early web", rgn:["GLOBAL"], typ:"language",
+    also:"the browser's only native language",
+    origin:"JavaScript was sketched in about ten days in 1995 and named to ride Java's coattails for marketing. Then it became the one language every browser ran.",
+    foreclosed:"A more considered web language was foreclosed; alternatives could only ever compile down to JavaScript.",
+    persist:"The entire front end of the internet rests on a fortnight's work from 1995; WebAssembly exists largely to find a way around it." },
+
+  { t:"SMTP email — trust by default", dom:"digital", yr:1982, era:"Early internet", rgn:["GLOBAL"], typ:"protocol",
+    also:"a mail protocol with no authentication",
+    origin:"SMTP was designed in 1982 for a small, trusting network where anyone could claim to be anyone — and there was no reason to lie.",
+    foreclosed:"Built-in sender authentication was foreclosed; the protocol assumed good faith at the core.",
+    persist:"Spam, phishing, and the whole SPF/DKIM/DMARC apparatus are scaffolding bolted onto a protocol that still, underneath, takes your word for who you are." },
+
+  { t:"TCP/IP beat OSI", dom:"digital", yr:1983, era:"Early internet", rgn:["GLOBAL"], typ:"protocol",
+    also:"running code vs the official standard",
+    origin:"Governments and standards bodies mandated the OSI protocol suite as the future; TCP/IP just shipped, ran, and spread.",
+    foreclosed:"The 'correct,' committee-designed network stack was foreclosed by the one that already worked on real machines.",
+    persist:"OSI survives only as the seven-layer diagram in textbooks; the internet runs on the stack that won by being deployed first." },
+
+  { t:"South Korea's ActiveX / IE lock-in", dom:"digital", yr:1999, era:"Early web", rgn:["KOR"], typ:"standard",
+    also:"a mandated cipher froze a nation on one browser",
+    origin:"A 1999 rule effectively required a domestic encryption scheme (SEED) for online transactions, delivered through Internet Explorer ActiveX plugins.",
+    foreclosed:"Browser choice was foreclosed for an entire country; banking and shopping demanded IE and a stack of mandatory security plugins.",
+    persist:"Koreans were tethered to obsolete Internet Explorer for roughly two decades — a security rule from the dial-up era that took dedicated legislation to unwind." },
+
+  { t:"Japan's fax and hanko persistence", dom:"digital", yr:1980, era:"20th c.", rgn:["JPN"], typ:"convention",
+    also:"the fax machine and the personal seal",
+    origin:"Japanese bureaucracy standardized on the fax and the carved hanko stamp as the trusted record long before digital alternatives matured.",
+    foreclosed:"Paperless workflows were foreclosed by institutions that treated the physical seal and the faxed page as the authoritative original.",
+    persist:"In 2020, public-health offices were faxing infection counts; a national campaign to abolish the hanko requirement became actual government policy." },
+
+  { t:"M-Pesa — leapfrogging the bank branch", dom:"digital", yr:2007, era:"21st c.", rgn:["AFR"], typ:"network",
+    also:"mobile money on a feature phone, Kenya",
+    origin:"With bank branches scarce, Kenya's M-Pesa put money transfer on plain SMS/USSD feature phones in 2007 and an economy adopted it overnight.",
+    foreclosed:"The Western card-and-branch banking stack was foreclosed — skipped entirely rather than built.",
+    persist:"A huge share of Kenyan GDP now flows over text-message rails; the leapfrogged substrate is itself now the entrenched layer that smartphones must accommodate." },
+
+  { t:"Date format chaos — MM/DD vs DD/MM vs ISO", dom:"digital", yr:1900, era:"20th c.", rgn:["GLOBAL","AMER","CAN"], typ:"convention",
+    also:"03/04/05 means three different days",
+    origin:"The US wrote dates month-first, most of the world day-first, and ISO 8601 later proposed the only unambiguous order, year-first.",
+    foreclosed:"A single global date order was foreclosed; software and forms still guess at which convention a user means.",
+    persist:"Canada manages to use all three in daily life, making a bare numeric date genuinely ambiguous on official documents — a convention collision with no fix in sight." },
+
+  { t:"Skeuomorphic UI fossils", dom:"digital", yr:1983, era:"GUI era", rgn:["GLOBAL"], typ:"convention",
+    also:"the floppy 'save' icon · Cc · 'hang up'",
+    origin:"Early interfaces borrowed pictures of physical objects so people could recognize what a control did.",
+    foreclosed:"Native digital metaphors were foreclosed once the borrowed icons became universally legible.",
+    persist:"We still 'save' to a floppy disk, 'Cc' a carbon copy, and 'hang up' a call — performing the shapes of hardware that most users have never touched." },
+
+  { t:"The 80-column line", dom:"digital", yr:1928, era:"Punch-card era", rgn:["GLOBAL"], typ:"convention", legend:true,
+    also:"from the punch card to your style guide",
+    origin:"IBM's 1928 punch card held 80 columns; terminals copied the width; code editors copied the terminals.",
+    foreclosed:"A wider default was foreclosed as 80 characters hardened from a card's capacity into a cultural rule.",
+    persist:"Style guides still cap source lines at 80 characters — a limit inherited from a piece of cardboard.",
+    myth:"Legend: the card's size was chosen to match an 1880s dollar bill so Treasury storage could be reused. Mechanism: 80 columns of round-then-rectangular holes, fixed by IBM." },
+
+  { t:"USB orientation & the charger mandate", dom:"digital", yr:1996, era:"21st c.", rgn:["GLOBAL","EUR"], typ:"standard",
+    also:"the un-reversible plug · Lightning vs USB-C",
+    origin:"USB-A shipped without a clear top, so it never goes in right the first time; Apple meanwhile entrenched its own proprietary connector.",
+    foreclosed:"A clean, universal, reversible standard was foreclosed by a billion devices already wired for the old shapes.",
+    persist:"It took European regulation, in force from 2024, to pry the phone world onto a single USB-C port — a lock-in broken by law, not by markets." },
+
+  /* ============ INSTITUTIONAL ============ */
+  { t:"The US healthcare–employer link", dom:"institutional", yr:1943, era:"WWII", rgn:["AMER"], typ:"policy",
+    also:"insurance bolted to the job",
+    origin:"Wartime wage caps stopped employers competing on pay, so they offered health insurance instead — and a tax ruling made that benefit tax-free.",
+    foreclosed:"Universal or individual coverage was foreclosed; the country's health system organized itself around the workplace by accident.",
+    persist:"Americans uniquely get insurance through their jobs and lose it when they leave — a permanent structural feature traceable to a 1940s wage freeze." },
+
+  { t:"The dollar's primacy", dom:"institutional", yr:1944, era:"Postwar", rgn:["GLOBAL","AMER"], typ:"policy",
+    also:"Bretton Woods, and what survived 1971",
+    origin:"The 1944 Bretton Woods order made the dollar the anchor of global finance, backed by gold.",
+    foreclosed:"A multipolar reserve system was foreclosed by the depth and liquidity the dollar accumulated.",
+    persist:"Nixon cut the gold link in 1971 — and the dollar's reserve role only deepened, because no rival market is liquid enough to switch to. Network effects outlived the mechanism that created them." },
+
+  { t:"SWIFT — messaging as infrastructure", dom:"institutional", yr:1973, era:"20th c.", rgn:["GLOBAL"], typ:"network",
+    also:"a 1970s bank-message standard, now a weapon",
+    origin:"SWIFT was built in 1973 as a shared way for banks to message each other about payments.",
+    foreclosed:"Competing rails were foreclosed once nearly every bank in the world joined the same network.",
+    persist:"A cooperative messaging format became geopolitical infrastructure — and the reason rival systems like China's CIPS and Russia's SPFS now exist is precisely to escape it." },
+
+  { t:"America's slow payment rails", dom:"institutional", yr:1974, era:"20th c.", rgn:["AMER","IND","LATAM"], typ:"network",
+    also:"batch ACH vs instant UPI / PIX",
+    origin:"The US automated its bank transfers as overnight batch processing (ACH) in the 1970s and entrenched it deeply.",
+    foreclosed:"Real-time payments were foreclosed at home for decades by the sunk cost of the batch system and the banks built on it.",
+    persist:"India's UPI and Brazil's PIX leapfrogged straight to instant transfers; the US only launched its own real-time system, FedNow, in 2023." },
+
+  { t:"Common law vs the Napoleonic code", dom:"institutional", yr:1804, era:"19th c.", rgn:["GLOBAL","CAN","LATAM","KOR","JPN"], typ:"policy",
+    also:"which empire arrived first",
+    origin:"Britain exported case-based common law; France exported the codified Napoleonic civil law; later modernizers (Japan, Korea) borrowed the German civil tradition.",
+    foreclosed:"A society's choice of legal logic was largely foreclosed by which power colonized or advised it.",
+    persist:"Quebec and Louisiana are civil-law islands inside common-law countries; South Africa runs a Roman-Dutch hybrid — each a fossil of who got there first." },
+
+  { t:"The CFA franc", dom:"institutional", yr:1945, era:"Late colonial", rgn:["AFR"], typ:"policy",
+    also:"a currency pegged to the colonizer",
+    origin:"France created a common currency for its African colonies in 1945, pegged first to the franc and later the euro, with reserves held in Paris.",
+    foreclosed:"Independent monetary policy was foreclosed for a swath of post-independence Africa.",
+    persist:"Fourteen countries still use a currency born of empire; the long-promised reform into a new currency, the 'eco,' remains only partly delivered." },
+
+  { t:"Return-free filing, foreclosed", dom:"institutional", yr:1955, era:"20th c.", rgn:["AMER"], typ:"policy",
+    also:"why Americans still 'do their taxes'",
+    origin:"Most rich countries pre-fill or simply finalize taxes for ordinary wage-earners; the US built its system around the taxpayer doing the work.",
+    foreclosed:"Government-prepared returns were foreclosed in the US — and kept foreclosed by tax-prep industry lobbying.",
+    persist:"In Japan and much of Europe, most people never file at all; in America, an annual ritual of forms persists by design and by rent-seeking." },
+
+  { t:"Daylight Saving Time", dom:"institutional", yr:1916, era:"WWI", rgn:["GLOBAL"], typ:"policy",
+    also:"a wartime measure that never left",
+    origin:"Countries shifted the clocks in the World Wars to save fuel and light, then kept doing it out of habit and inertia.",
+    foreclosed:"A stable, single year-round time was foreclosed; the biannual switch entrenched itself in law and software.",
+    persist:"Arizona and Hawaii simply opted out; the EU voted to abolish the change in 2019 and has still not managed to — the clock-shift outlives every reason for it." },
+
+  { t:"The Electoral College", dom:"institutional", yr:1787, era:"Founding era", rgn:["AMER"], typ:"policy",
+    also:"an 18th-century compromise, frozen in",
+    origin:"The college was a negotiated compromise among the framers over how to choose a president, reflecting the bargains of 1787.",
+    foreclosed:"A direct national popular vote was foreclosed and then locked behind the hardest amendment process in the democratic world.",
+    persist:"Modern campaigns, voter math, and recurring popular-vote-loser presidencies all run on a mechanism designed for thirteen agrarian states." }
+];
+
+/* ---------- Render & filter ---------- */
+const DOM_LABEL = {physical:"Physical layer", digital:"Digital layer", institutional:"Institutional layer"};
+const RGN_LABEL = {GLOBAL:"Global",AMER:"Americas",CAN:"Canada",LATAM:"Lat. Am.",EUR:"Europe",JPN:"Japan",KOR:"Korea",CHN:"China",IND:"India",AFR:"Africa",EURASIA:"Eurasia",OCE:"Oceania"};
+
+const state = { dom:"all", rgn:"all", q:"" };
+
+function eraDepth(yr){
+  if(yr < 0) return "≈ "+Math.abs(yr)+" BCE";
+  return yr;
+}
+
+function recHTML(d){
+  const rgns = d.rgn.map(r=>`<span class="rgn">${RGN_LABEL[r]||r}</span>`).join("");
+  const legend = d.legend ? `<span class="legend-tag">Legend</span>` : "";
+  const myth = d.myth ? `<span class="myth">${d.myth}</span>` : "";
+  return `<article class="rec" data-dom="${d.dom}" data-rgn="${d.rgn.join(' ')}" data-text="${(d.t+' '+d.also+' '+d.origin+' '+d.persist).toLowerCase().replace(/<[^>]+>/g,'').replace(/"/g,'')}">
+    <div class="depth">
+      <div class="rail"></div>
+      <span class="yr">${eraDepth(d.yr)}</span>
+      <span class="era">${d.era}</span>
+      <span class="dom">${d.dom}</span>
+    </div>
+    <div class="body">
+      <div class="ident">
+        <div class="tagrow">${rgns}<span class="typ">${d.typ}</span>${legend}</div>
+        <h2>${d.t}</h2>
+        <p class="also">${d.also}</p>
+      </div>
+      <div class="beats">
+        <div class="beat"><span class="k">Frozen by</span><span class="v">${d.origin}</span></div>
+        <div class="beat"><span class="k">Foreclosed</span><span class="v">${d.foreclosed}</span></div>
+        <div class="beat persist"><span class="k">Still running</span><span class="v">${d.persist}${myth}</span></div>
+      </div>
+    </div>
+  </article>`;
+}
+
+const recordsEl = document.getElementById('records');
+const sorted = [...DATA].sort((a,b)=> a.yr - b.yr); // deepest/oldest first
+recordsEl.innerHTML = sorted.map(recHTML).join("");
+
+/* stats */
+document.getElementById('stat-total').textContent = DATA.length;
+const yrs = DATA.map(d=>d.yr);
+const oldest = Math.min(...yrs), newest = Math.max(...yrs);
+document.getElementById('stat-span').textContent = (oldest<0?Math.abs(oldest)+"bce":oldest)+"–"+newest;
+document.getElementById('stat-regions').textContent = new Set(DATA.flatMap(d=>d.rgn)).size;
+document.getElementById('stat-legend').textContent = DATA.filter(d=>d.legend).length;
+document.getElementById('count-t').textContent = DATA.length;
+
+/* filtering */
+function apply(){
+  let shown = 0;
+  document.querySelectorAll('.rec').forEach(r=>{
+    const okDom = state.dom==="all" || r.dataset.dom===state.dom;
+    const okRgn = state.rgn==="all" || r.dataset.rgn.split(' ').includes(state.rgn);
+    const okQ = !state.q || r.dataset.text.includes(state.q);
+    const ok = okDom && okRgn && okQ;
+    r.classList.toggle('hide', !ok);
+    if(ok) shown++;
+  });
+  document.getElementById('count-n').textContent = shown;
+  document.getElementById('empty').classList.toggle('show', shown===0);
+}
+
+document.querySelectorAll('.chip[data-filter]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const f = btn.dataset.filter;
+    document.querySelectorAll(`.chip[data-filter="${f}"]`).forEach(b=>b.classList.remove('on'));
+    btn.classList.add('on');
+    state[f] = btn.dataset.val;
+    apply();
+  });
+});
+document.getElementById('search').addEventListener('input', e=>{
+  state.q = e.target.value.toLowerCase().trim();
+  apply();
+});
+
+/* reveal on scroll */
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(reduce){
+  document.querySelectorAll('.rec').forEach(r=>r.classList.add('in'));
+}else{
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }});
+  }, {rootMargin:"0px 0px -8% 0px"});
+  document.querySelectorAll('.rec').forEach(r=>io.observe(r));
+}
+
+apply();
+</script>
+</body>
+</html>
