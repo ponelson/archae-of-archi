@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Archaeology of Architecture — A Field Catalog of Frozen Accidents</title>
+<title>The Archaeology of Architecture: A Field Catalog of Frozen Accidents</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
@@ -18,9 +18,9 @@
     --ink-mute:#aba28f;
     --ink-faint:#756e5f;
     --signal:#e59c25;
-    --phys:#d35d25;   /* physical — rust */
-    --digi:#3da393;   /* digital — oxidized bronze */
-    --inst:#cca43b;   /* institutional — brass */
+    --phys:#d35d25;   /* physical: rust */
+    --digi:#3da393;   /* digital: oxidized bronze */
+    --inst:#cca43b;   /* institutional: brass */
     --display:'Instrument Serif',Georgia,serif;
     --body:'Spectral',Georgia,serif;
     --mono:'JetBrains Mono',monospace;
@@ -287,13 +287,13 @@
         <span class="lead">The dominant firm of a generation defines the foundation of the next.</span>
         Better alternatives are foreclosed not because they are worse, but because switching costs exceed switching benefit. The market chooses a local maximum and entrenches it for a century.
       </blockquote>
-      <p class="standfirst">Every design decision lays down a stratum. Some are deliberate; most are contingent — a full disk in 1971, a wartime wage cap, the width of a colliery wagon. The choice gets load-bearing, then permanent, then invisible. This is a comprehensive field catalog of those strata: <b>the accidents we froze, the roads we foreclosed, and the fossils still running underneath our systems.</b> Filter by layer or by region; sorted by depth — deepest, oldest freezes first.</p>
+      <p class="standfirst">Every design decision lays down a stratum. Some are deliberate; most are contingent: a full disk in 1971, a wartime wage cap, the width of a colliery wagon. The choice gets load-bearing, then permanent, then invisible. This is a comprehensive field catalog of those strata: <b>the accidents we froze, the roads we foreclosed, and the fossils still running underneath our systems.</b> Filter by layer or by region; sorted by depth: deepest, oldest freezes first.</p>
     </div>
   </header>
 
   <div class="statline">
     <div class="stat"><span class="n" id="stat-total">0</span><span class="l">Artifacts Cataloged</span></div>
-    <div class="stat"><span class="n" id="stat-span">—</span><span class="l">Span of Strata</span></div>
+    <div class="stat"><span class="n" id="stat-span">··</span><span class="l">Span of Strata</span></div>
     <div class="stat"><span class="n" id="stat-regions">0</span><span class="l">Regions of Origin</span></div>
     <div class="stat"><span class="n" id="stat-legend">0</span><span class="l">Origin Myths Flagged</span></div>
   </div>
@@ -323,6 +323,7 @@
       <button class="chip" data-filter="rgn" data-val="CHN">China</button>
       <button class="chip" data-filter="rgn" data-val="IND">India</button>
       <button class="chip" data-filter="rgn" data-val="AFR">Africa</button>
+      <button class="chip" data-filter="rgn" data-val="MENA">Middle East</button>
       <button class="chip" data-filter="rgn" data-val="EURASIA">Eurasia</button>
       <button class="chip" data-filter="rgn" data-val="OCE">Oceania</button>
       <span class="ctl-spacer"></span>
@@ -340,8 +341,8 @@
   <div class="wrap">
     <p class="closing">The most expensive decisions are the ones nobody remembers making.</p>
     <p class="colophon">
-      A field catalog of path dependence across the physical, digital, and institutional record. Sorted by freeze-date as depth: surface is now, bedrock is antiquity. Entries tagged <span style="color:var(--signal)">LEGEND</span> carry a romantic origin story that is apocryphal or contested — the myth is separated from the documented mechanism, because the path dependence is real either way. Compiled for <a href="https://ponelson.github.io">ponelson.github.io</a> · build v2.<br>
-      Reference, not gospel — dates mark the moment a choice became load-bearing, not always its first appearance.
+      A field catalog of path dependence across the physical, digital, and institutional record. Sorted by freeze-date as depth: surface is now, bedrock is antiquity. Entries tagged <span style="color:var(--signal)">LEGEND</span> carry a romantic origin story that is apocryphal or contested. The myth is separated from the documented mechanism, because the path dependence is real either way. Compiled for <a href="https://ponelson.github.io">ponelson.github.io</a> · build v3.<br>
+      Reference, not gospel. Dates mark the moment a choice became load-bearing, not always its first appearance.
     </p>
   </div>
 </footer>
@@ -349,6 +350,29 @@
 <script>
 const DATA = [
   /* ============ PHYSICAL ============ */
+  { t:"Base-60 time and the 360° circle", dom:"physical", yr:-1800, era:"Babylon", rgn:["GLOBAL","MENA"], typ:"convention",
+    also:"Babylonian arithmetic, still on every clock",
+    origin:"Babylonian astronomers counted in base 60 because it divides so many ways, and cut the day and the circle to match.",
+    foreclosed:"Decimal time was foreclosed; the French Revolution's 10-hour day and 100-minute hour were abandoned within a few years.",
+    persist:"Every clock face, every 360-degree circle, and every 60-second minute still runs on the arithmetic of a civilization four thousand years gone." },
+
+  { t:"The seven-day week", dom:"physical", yr:-600, era:"Antiquity", rgn:["GLOBAL","MENA"], typ:"convention",
+    also:"an astrological cycle no reform could kill",
+    origin:"The seven-day week has no astronomical basis; it descends from Babylonian planet-worship and the Jewish Sabbath, and Rome carried it across the empire.",
+    foreclosed:"Cleaner cycles were foreclosed by habit alone: the French Revolution's ten-day week and the Soviet five- and six-day weeks both collapsed against it.",
+    persist:"Global payroll, commerce, and the calendar on the wall still run on a seven-day rhythm chosen for the planets and the Sabbath." },
+
+  { t:"English spelling, frozen by the press", dom:"physical", yr:1476, era:"Early modern", rgn:["EUR","GLOBAL"], typ:"convention",
+    also:"Caxton's type vs the Great Vowel Shift",
+    origin:"Caxton's printing press fixed English spelling in the late 1400s, just before the Great Vowel Shift changed how the words were said.",
+    foreclosed:"Phonetic spelling was foreclosed; the print set while the speech kept moving, and reforms from Franklin to the Simplified Spelling Board all failed.",
+    persist:"'Knight,' 'through,' and 'colonel' still spell sounds that vanished five centuries ago, because the press set the letters before the tongue settled." },
+
+  { t:"Sykes-Picot and the Middle East map", dom:"physical", yr:1916, era:"WWI", rgn:["MENA"], typ:"border",
+    also:"borders drawn by two diplomats in secret",
+    origin:"In 1916 a British and a French diplomat secretly divided the Ottoman Arab lands between their empires along lines of convenience.",
+    foreclosed:"Borders following tribe, sect, or geography were foreclosed; the straight lines cut across all three.",
+    persist:"Much of the modern Middle East, and a good deal of its conflict, still runs along boundaries two men drew to suit London and Paris." },
   { t:"Babylonian base-60 time system", dom:"physical", yr:-1800, era:"Antiquity", rgn:["GLOBAL"], typ:"convention",
     also:"60 minutes, 60 seconds, 360 degrees",
     origin:"Ancient Mesopotamian astronomers calculated figures using a sexagesimal (base-60) system, valued because 60 is divisible cleanly by 12 distinct factors.",
@@ -367,52 +391,52 @@ const DATA = [
     foreclosed:"A single global handedness was foreclosed, leaving every land border between a left and a right country needing a crossover.",
     persist:"Sweden switched sides overnight in 1967 (Dagen H); Samoa switched the other way in 2009 to import cheap used cars; Myanmar's 1970 switch left it driving right in mostly right-hand-drive cars." },
 
-  { t:"Edison screw lightbulb socket — E26/E27", dom:"physical", yr:1880, era:"Industrial Dawn", rgn:["GLOBAL"], typ:"standard",
-    also:"The Thomas Edison legacy screw mount",
-    origin:"Thomas Edison designed a simple, threaded circular screw base for his early incandescent bulbs to hold them securely against vibrations.",
-    foreclosed:"More secure pin-based connectors, quick-release bays, or integrated solid-state contacts were foreclosed by a monumental consumer footprint.",
-    persist:"Modern LED lightbulbs, which are computerized micro-electronics that don't need a heavy screw-in base, are deliberately manufactured with Edison's 1880 circular brass threads just to fit standard household architecture." },
+  { t:"Edison screw lightbulb socket: E26/E27", dom:"physical", yr:1880, era:"19th c.", rgn:["GLOBAL"], typ:"standard",
+    also:"the screw base on nearly every bulb",
+    origin:"Edison gave his incandescent bulbs a threaded brass screw base so they would hold firm against vibration, and every socket in the house was wired to match.",
+    foreclosed:"Bayonet pins and quick-release fittings were foreclosed once a billion sockets already took the screw.",
+    persist:"An LED bulb is micro-electronics that needs no screw at all, yet it is still built with Edison's 1880 brass thread just to fit the hole in the ceiling." },
 
-  { t:"Vertical mill layout — steam engine line-shaft", dom:"physical", yr:1785, era:"Industrial Revolution", rgn:["EUR","AMER"], typ:"architecture",
-    also:"Multi-story brick factories and central torque belts",
-    origin:"Early industrial steam engines transferred kinetic power via a single, massive central line-shaft running through a mill. To tap the mechanical spin, every loom or machine had to attach via leather pulleys, forcing factories to build upward in dense, vertically stacked configurations wrapped tightly around the power core.",
-    foreclosed:"Sprawling, single-story horizontal assembly floors were completely foreclosed due to the friction, distance, and gravity limitations of physical drive belts.",
-    persist:"When independent electric motors emerged in the late 1800s, engineers spent thirty years using a single electric motor to spin old steam line-shafts in multi-story towers out of sheer operational habit, delaying modern horizontal layout efficiency for a full generation." },
+  { t:"Vertical mill layout: steam engine line-shaft", dom:"physical", yr:1785, era:"18th c.", rgn:["EUR","AMER"], typ:"architecture",
+    also:"multi-story mills wrapped around a spinning shaft",
+    origin:"A single steam engine drove one long line-shaft down the length of a mill, and every machine tapped it through leather belts. To reach the shaft, factories had to stack upward, wrapped tight around the power core.",
+    foreclosed:"Sprawling single-story assembly floors were foreclosed by the friction and reach of physical drive belts.",
+    persist:"When electric motors arrived, engineers spent thirty years using one motor to spin the old line-shaft in multi-story towers out of habit, delaying the horizontal factory for a generation." },
 
   { t:"Broadway across the Manhattan grid", dom:"physical", yr:1811, era:"19th c.", rgn:["AMER"], typ:"network",
     also:"the Wickquasgeck trail vs the Commissioners' Plan",
-    origin:"The 1811 plan imposed a rigid rectangular grid on Manhattan — but an older Lenape trail already ran diagonally up the island.",
+    origin:"The 1811 plan imposed a rigid rectangular grid on Manhattan, but an older Lenape trail already ran diagonally up the island.",
     foreclosed:"A perfectly orthogonal city was foreclosed by a footpath that predated the surveyors.",
-    persist:"Broadway still slices across the grid at an angle, and every place the diagonal meets the squares — Times Square, Union Square — is a scar of the old trail." },
+    persist:"Broadway still slices across the grid at an angle, and every place the diagonal meets the squares (Times Square, Union Square) is a scar of the old trail." },
 
-  { t:"British rail loading gauge constraints", dom:"physical", yr:1825, era:"Early Railway Era", rgn:["EUR"], typ:"network",
-    also:"Why UK trains are narrower and shorter than European and US lines",
-    origin:"Britain's first commercial tracks were tunneled and bridged minimalisticly to accommodate tiny early steam engines like George Stephenson’s Rocket, cutting clearances very tight to the masonry.",
-    foreclosed:"The capacity to deploy double-decker passenger trains or carry standard double-stacked container freight without spending trillions of dollars altering historical stone overpasses was foreclosed.",
-    persist:"The UK rail infrastructure remains trapped in a significantly smaller physical clearance envelope ('loading gauge') than continental Europe; modern European rolling stock cannot physically fit down British tracks." },
+  { t:"British loading gauge: the tight envelope", dom:"physical", yr:1825, era:"19th c.", rgn:["EUR"], typ:"network",
+    also:"why British trains run smaller than the Continent's",
+    origin:"Britain's first lines were bored and bridged tight around tiny early engines like Stephenson's Rocket, cutting clearances close to the masonry.",
+    foreclosed:"Double-decker carriages and double-stacked container freight were foreclosed, short of rebuilding every Victorian tunnel and overpass.",
+    persist:"British track still sits in a tighter clearance envelope than the Continent; standard European rolling stock physically cannot fit down it." },
 
-  { t:"Russian / Soviet rail gauge — 1,520 mm", dom:"physical", yr:1843, era:"19th c.", rgn:["EURASIA"], typ:"gauge",
+  { t:"Russian / Soviet rail gauge: 1,520 mm", dom:"physical", yr:1843, era:"19th c.", rgn:["EURASIA"], typ:"gauge",
     also:"Russia, CIS, Mongolia, Finland (1,524)",
     origin:"An American consultant advised a five-foot gauge for the first Moscow–St. Petersburg line; the empire then built everything to match.",
     foreclosed:"Through-running with European standard gauge was foreclosed across a sixth of the Earth's landmass.",
     persist:"Freight bogies are still swapped, or wheels re-gauged, at Brest and other western borders. Finland remains on the Tsarist width to this day." },
 
-  { t:"Standard railway gauge — 1,435 mm", dom:"physical", yr:1846, era:"Gauge Act", rgn:["GLOBAL","EUR"], typ:"gauge", legend:true,
+  { t:"Standard railway gauge: 1,435 mm", dom:"physical", yr:1846, era:"Gauge Act", rgn:["GLOBAL","EUR"], typ:"gauge", legend:true,
     also:"4 ft 8½ in · the width of most of the world's track",
     origin:"Britain's 1846 Gauge Act locked in George Stephenson's <b>4 ft 8½ in</b>, the width already used by the colliery wagonways he grew up around, and exported it down every line the British built.",
-    foreclosed:"Brunel's 7-ft broad gauge ran faster and steadier on the Great Western — and was torn up anyway, because the network had already standardized around the narrower track.",
+    foreclosed:"Brunel's 7-ft broad gauge ran faster and steadier on the Great Western, and was torn up anyway, because the network had already standardized around the narrower track.",
     persist:"Most of the planet's rail still runs at this width. The romantic claim that it descends from Roman chariot ruts (two horses abreast) is the part to be careful with.",
     myth:"Myth: set by Roman horses' rumps. Mechanism: English colliery cart-tracks, standardized by statute." },
 
-  { t:"Iberian broad gauge — 1,668 mm", dom:"physical", yr:1855, era:"19th c.", rgn:["EUR"], typ:"gauge",
+  { t:"Iberian broad gauge: 1,668 mm", dom:"physical", yr:1855, era:"19th c.", rgn:["EUR"], typ:"gauge",
     also:"Spain & Portugal · six Castilian feet",
     origin:"Spain's engineers picked a wider gauge for the heavy locomotives they thought the steep terrain would demand.",
-    foreclosed:"Compatibility with the French (standard-gauge) network was foreclosed — a break-of-gauge sat at the Pyrenees for a century and a half.",
+    foreclosed:"Compatibility with the French (standard-gauge) network was foreclosed. A break-of-gauge sat at the Pyrenees for a century and a half.",
     persist:"AVE high-speed lines had to be built fresh in standard gauge to reach Europe; the legacy network still needs gauge-changing axles at the border." },
 
   { t:"The Australian gauge muddle", dom:"physical", yr:1855, era:"19th c.", rgn:["OCE"], typ:"gauge",
     also:"NSW standard · Victoria broad · Queensland narrow",
-    origin:"Each colony chose its own gauge before federation — and a contractor's switch of allegiance left New South Wales and Victoria on incompatible widths.",
+    origin:"Each colony chose its own gauge before federation, and a contractor's switch of allegiance left New South Wales and Victoria on incompatible widths.",
     foreclosed:"A single national network was foreclosed at birth; passengers changed trains at colonial borders for over a century.",
     persist:"The break-of-gauge at Albury became a national embarrassment; standardization is still being retrofitted line by line." },
 
@@ -420,9 +444,9 @@ const DATA = [
     also:"1,067 mm legacy vs 1,435 mm bullet train",
     origin:"British advisors built Meiji Japan's first railways in cheap 1,067 mm narrow gauge, and the entire national network inherited it.",
     foreclosed:"High-speed running on the legacy network was foreclosed; the 1964 Shinkansen had to be built as an entirely separate standard-gauge system.",
-    persist:"Japan now runs two parallel railroads — the slow narrow-gauge web and the standard-gauge bullet lines threaded around it." },
+    persist:"Japan now runs two parallel railroads: the slow narrow-gauge web and the standard-gauge bullet lines threaded around it." },
 
-  { t:"Cape gauge — 1,067 mm", dom:"physical", yr:1873, era:"Colonial era", rgn:["AFR","JPN","OCE"], typ:"gauge",
+  { t:"Cape gauge: 1,067 mm", dom:"physical", yr:1873, era:"Colonial era", rgn:["AFR","JPN","OCE"], typ:"gauge",
     also:"Southern Africa · Japan · Indonesia · NZ · Queensland",
     origin:"A cheap-to-build 3 ft 6 in narrow gauge was adopted at the Cape and spread across the colonial rail map as the budget default.",
     foreclosed:"The capacity and speed of wider gauges were foreclosed in exchange for laying more cheap track faster.",
@@ -434,13 +458,13 @@ const DATA = [
     foreclosed:"Frictionless engineering interchange was foreclosed at the seam between metric and imperial estates.",
     persist:"NASA lost the Mars Climate Orbiter in 1999 to a metric/imperial mismatch; Britain still buys petrol in litres but measures the road in miles." },
 
-  { t:"The Jefferson grid — Public Land Survey", dom:"physical", yr:1785, era:"Founding era", rgn:["AMER"], typ:"cadastre",
+  { t:"The Jefferson grid: Public Land Survey", dom:"physical", yr:1785, era:"Founding era", rgn:["AMER"], typ:"cadastre",
     also:"township & range vs metes-and-bounds",
     origin:"The 1785 Land Ordinance imposed a rectangular survey grid on everything west of the original colonies, sight-unseen.",
     foreclosed:"Terrain-following parcels were foreclosed; the grid marched over rivers and ridgelines regardless of the land underneath.",
-    persist:"The checkerboard of mile-square sections is visible from any window seat over the Midwest — and the tangled metes-and-bounds of the old colonies sit right beside it." },
+    persist:"The checkerboard of mile-square sections is visible from any window seat over the Midwest, and the tangled metes-and-bounds of the old colonies sit right beside it." },
 
-  { t:"Long-lot land — seigneurial rang", dom:"physical", yr:1627, era:"New France", rgn:["CAN","AMER"], typ:"cadastre",
+  { t:"Long-lot land: seigneurial rang", dom:"physical", yr:1627, era:"New France", rgn:["CAN","AMER"], typ:"cadastre",
     also:"Quebec & Louisiana riverfront strips",
     origin:"New France divided land into narrow strips perpendicular to the river so every farm touched the water highway.",
     foreclosed:"The square-grid logic that took the rest of North America was foreclosed wherever the French got there first.",
@@ -452,7 +476,7 @@ const DATA = [
     foreclosed:"Organic field boundaries were foreclosed across the plains where the grid was enforced.",
     persist:"Roads, paddies, and property lines in parts of the Kansai plain still trace a 1,300-year-old administrative grid." },
 
-  { t:"Mains frequency — 60 Hz vs 50 Hz", dom:"physical", yr:1891, era:"19th c.", rgn:["GLOBAL"], typ:"standard",
+  { t:"Mains frequency: 60 Hz vs 50 Hz", dom:"physical", yr:1891, era:"19th c.", rgn:["GLOBAL"], typ:"standard",
     also:"Americas 60 · most of the world 50",
     origin:"AEG in Germany settled on 50 Hz; American interests around Westinghouse landed on 60. Both were defensible; neither was inevitable.",
     foreclosed:"A single global frequency was foreclosed, splitting motors, clocks, and grids into two incompatible electrical worlds.",
@@ -462,42 +486,42 @@ const DATA = [
     also:"Tokyo 50 Hz (German kit) · Osaka 60 Hz (US kit)",
     origin:"Tokyo bought German AEG generators (50 Hz); Osaka bought American GE generators (60 Hz). The country's grid froze along that purchasing line.",
     foreclosed:"A unified national grid was foreclosed; the two halves can only trade power through a handful of frequency converters.",
-    persist:"In the 2011 disaster, the west could barely send power east — the bottleneck was a procurement decision from the 1890s." },
+    persist:"In the 2011 disaster, the west could barely send power east: the bottleneck was a procurement decision from the 1890s." },
 
   { t:"The 1/4-20 tripod thread", dom:"physical", yr:1898, era:"19th c.", rgn:["GLOBAL"], typ:"standard",
     also:"an imperial screw on every camera",
-    origin:"Early camera makers settled on a quarter-inch, 20-threads-per-inch screw — a customary-unit thread — for the tripod mount.",
+    origin:"Early camera makers settled on a quarter-inch, 20-threads-per-inch screw (a customary-unit thread) for the tripod mount.",
     foreclosed:"A metric mount was foreclosed once the installed base of tripods and cameras locked the thread in.",
     persist:"Every camera sold worldwide, metric countries included, still has an imperial thread tapped into its base." },
 
-  { t:"Electrical plugs & sockets — Types A–N", dom:"physical", yr:1904, era:"20th c.", rgn:["GLOBAL"], typ:"standard",
+  { t:"Electrical plugs & sockets: Types A–N", dom:"physical", yr:1904, era:"20th c.", rgn:["GLOBAL"], typ:"standard",
     also:"a dozen-plus incompatible national patterns",
     origin:"Each electrifying nation standardized its own plug before any international body existed, often around a domestic manufacturer's design.",
     foreclosed:"A universal socket was foreclosed; the installed base of wall outlets in every building made later harmonization hopeless.",
-    persist:"The traveler's bag of adapters is pure archaeology — each prong shape a frozen national decision no one will rip out of the walls." },
+    persist:"The traveler's bag of adapters is pure archaeology: each prong shape a frozen national decision no one will rip out of the walls." },
 
-  { t:"Panamax — canal that sized the ships", dom:"physical", yr:1914, era:"20th c.", rgn:["AMER","GLOBAL"], typ:"standard",
+  { t:"Panamax: canal that sized the ships", dom:"physical", yr:1914, era:"20th c.", rgn:["AMER","GLOBAL"], typ:"standard",
     also:"original lock chamber dimensions",
     origin:"The Panama Canal's 1914 lock chambers set a hard ceiling on ship beam and length; naval architects designed fleets to fit exactly.",
     foreclosed:"Larger, more efficient hull forms were foreclosed for any vessel that needed the shortcut.",
-    persist:"'Panamax' defined ship design for a century; even the 2016 expansion just created a new frozen size — 'Neopanamax' — for the next one." },
+    persist:"'Panamax' defined ship design for a century; even the 2016 expansion just created a new frozen size ('Neopanamax') for the next one." },
 
-  { t:"Standard automobile pedal configuration", dom:"physical", yr:1916, era:"Automotive Dawn", rgn:["GLOBAL","AMER"], typ:"convention",
-    also:"Left Clutch, Center Brake, Right Gas",
-    origin:"Early automobiles featured a chaos of steering tillers, manual throttles, external levers, and unpredictable floor pedals. The 1916 Cadillac Type 53 unified controls into a clean layout: clutch, brake, and throttle pedals on the floor with a central gear selector.",
-    foreclosed:"Alternative hand-throttle joysticks, central driving seats, or ergonomically superior foot control configurations were foreclosed by a wave of universal muscle memory.",
-    persist:"Every consumer manual and automatic car manufactured globally layouts its accelerator and braking pedals according to this 1916 luxury vehicle's blueprint." },
+  { t:"The clutch-brake-throttle order", dom:"physical", yr:1916, era:"20th c.", rgn:["GLOBAL","AMER"], typ:"convention",
+    also:"clutch, brake, throttle, left to right",
+    origin:"Early cars were a chaos of tillers, hand throttles, and floor levers in no fixed order. The 1916 Cadillac Type 53 was among the first to settle the modern arrangement: clutch, brake, and throttle underfoot, gearshift at center.",
+    foreclosed:"Hand throttles, center seats, and rival pedal orders were foreclosed as driver muscle memory hardened around one layout.",
+    persist:"Manual cars worldwide still place the pedals in that 1916 order; automatics simply dropped the clutch and kept brake and throttle where they were." },
 
-  { t:"The tatami module — sizing Japanese rooms", dom:"physical", yr:1650, era:"Edo period", rgn:["JPN"], typ:"convention",
+  { t:"The tatami module: sizing Japanese rooms", dom:"physical", yr:1650, era:"Edo period", rgn:["JPN"], typ:"convention",
     also:"Kyoto-ma vs Edo-ma mat sizes",
     origin:"Rooms were laid out as whole numbers of tatami mats, making the mat the unit of architecture itself.",
     foreclosed:"Free-form room dimensions were foreclosed; the building had to be a multiple of the mat.",
-    persist:"Japanese apartments are still advertised in jō (mats), and a Kyoto mat is a different size from a Tokyo mat — a regional measurement schism baked into floor plans." },
+    persist:"Japanese apartments are still advertised in jō (mats), and a Kyoto mat is a different size from a Tokyo mat, a regional measurement schism baked into floor plans." },
 
   { t:"The Tordesillas line", dom:"physical", yr:1494, era:"Age of discovery", rgn:["LATAM"], typ:"border",
     also:"a meridian drawn by the Pope",
     origin:"A 1494 treaty split the unexplored world between Spain and Portugal along a line of longitude in the Atlantic.",
-    foreclosed:"A Spanish-speaking continent was foreclosed east of the line — the bulge of South America fell to Portugal.",
+    foreclosed:"A Spanish-speaking continent was foreclosed east of the line. The bulge of South America fell to Portugal.",
     persist:"It is why Brazil speaks Portuguese and its neighbors speak Spanish: a 500-year-old line on a map you can still hear in the language." },
 
   { t:"Colonial straight-line borders", dom:"physical", yr:1885, era:"Scramble for Africa", rgn:["AFR"], typ:"border",
@@ -506,25 +530,25 @@ const DATA = [
     foreclosed:"Borders following nations, languages, or watersheds were foreclosed; ethnic groups were split or forced together by ruler-straight lines.",
     persist:"Many of today's conflicts and the awkward geometry of the African map descend directly from boundaries no African was in the room to draw." },
 
-  { t:"The shipping container — ISO 668", dom:"physical", yr:1956, era:"20th c.", rgn:["GLOBAL"], typ:"standard",
+  { t:"The shipping container: ISO 668", dom:"physical", yr:1956, era:"20th c.", rgn:["GLOBAL"], typ:"standard",
     also:"the 8-ft box · the TEU",
     origin:"Malcolm McLean's corner-casting geometry won the standardization fight, and the world's freight collapsed onto one box.",
     foreclosed:"Better-fitting dimensions were foreclosed once ships, cranes, chassis, and ports were all built to grip the same corner fittings.",
     persist:"Container ships, gantry cranes, rail wells, and truck beds worldwide are sized to a 1950s box. The geometry now constrains the vessels, not the cargo." },
 
-  { t:"Pallets — ISO vs Euro vs 48×40", dom:"physical", yr:1961, era:"20th c.", rgn:["GLOBAL","EUR","AMER"], typ:"standard",
+  { t:"Pallets: ISO vs Euro vs 48×40", dom:"physical", yr:1961, era:"20th c.", rgn:["GLOBAL","EUR","AMER"], typ:"standard",
     also:"1200×1000 · 1200×800 · 48×40 in",
     origin:"Europe standardized the Euro-pallet (1200×800); North America entrenched the 48×40-inch GMA pallet. Each fit its own trucks and racking.",
     foreclosed:"A single global footprint was foreclosed; goods get re-palletized at the boundary between systems.",
     persist:"Warehouse racking, container loading math, and forklift tines on two continents are dimensioned around incompatible wooden rectangles." },
 
-  { t:"Paper size — A4 vs US Letter", dom:"physical", yr:1922, era:"20th c.", rgn:["GLOBAL","AMER","CAN"], typ:"standard",
+  { t:"Paper size: A4 vs US Letter", dom:"physical", yr:1922, era:"20th c.", rgn:["GLOBAL","AMER","CAN"], typ:"standard",
     also:"ISO 216 (√2 ratio) vs 8.5×11 in",
     origin:"Germany's DIN standardized the elegant √2 A-series; the US and its trade neighbors kept the older Letter size.",
     foreclosed:"A single document standard was foreclosed; cross-border printing, software defaults, and PDF templates forked permanently.",
-    persist:"North America (and parts of Latin America) still defaults to Letter while the rest of the world uses A4 — a quiet, daily incompatibility." },
+    persist:"North America (and parts of Latin America) still defaults to Letter while the rest of the world uses A4: a quiet, daily incompatibility." },
 
-  { t:"Gregorian calendar — staggered adoption", dom:"physical", yr:1582, era:"Early modern", rgn:["GLOBAL"], typ:"convention",
+  { t:"Gregorian calendar: staggered adoption", dom:"physical", yr:1582, era:"Early modern", rgn:["GLOBAL"], typ:"convention",
     also:"1582 · 1752 · 1918 · 1923 · 2016",
     origin:"Catholic Europe reformed the calendar in 1582; everyone else converted on their own schedule, dropping different numbers of days.",
     foreclosed:"A single shared date was foreclosed for centuries; Britain and its colonies lost eleven days in 1752, rioting over the 'stolen' time.",
@@ -534,9 +558,9 @@ const DATA = [
     also:"five geographic zones, one official clock",
     origin:"The new government set the whole country to Beijing time as an instrument of national unity.",
     foreclosed:"Local solar alignment was foreclosed across a 5,000-km span; in the far west, official noon arrives with the morning.",
-    persist:"Xinjiang quietly runs an unofficial 'local time' two hours behind the clock on the wall — a fault line hidden inside a single time zone." },
+    persist:"Xinjiang quietly runs an unofficial 'local time' two hours behind the clock on the wall, a fault line hidden inside a single time zone." },
 
-  { t:"India Standard Time — UTC+5:30", dom:"physical", yr:1906, era:"20th c.", rgn:["IND"], typ:"convention",
+  { t:"India Standard Time: UTC+5:30", dom:"physical", yr:1906, era:"20th c.", rgn:["IND"], typ:"convention",
     also:"one half-hour zone over 2,000 km",
     origin:"British India fixed a single meridian for the whole subcontinent, splitting the difference with a half-hour offset.",
     foreclosed:"Eastern alignment was foreclosed; the sun rises in Arunachal Pradesh nearly two hours before the official day begins.",
@@ -549,51 +573,51 @@ const DATA = [
     persist:"The American penny still costs more than a cent to make, decades after Canada, Australia, and New Zealand quietly retired theirs." },
 
   /* ============ DIGITAL ============ */
-  { t:"The 8-bit byte — IBM System/360 architecture", dom:"digital", yr:1964, era:"Mainframe Era", rgn:["GLOBAL"], typ:"architecture",
-    also:"When a byte could be 4, 6, 7, or 9 bits long",
-    origin:"Early computing systems used word sizes tailored to narrow math applications (frequently 36 bits with 6-bit characters). IBM locked in the 8-bit byte for its legendary System/360 mainframe to accommodate both alphanumeric data and packed decimals efficiently.",
-    foreclosed:"Alternative architectural paradigms built around variable binary scales or non-power-of-two widths were phased out by IBM's commercial gravity.",
-    persist:"The byte is universally understood as exactly 8 bits. Every hardware specification, internet packet structure, and RAM module treats 8 bits as the basic atom of computing." },
+  { t:"The 8-bit byte: IBM System/360 architecture", dom:"digital", yr:1964, era:"Mainframe era", rgn:["GLOBAL"], typ:"architecture",
+    also:"when a byte could be six or seven bits",
+    origin:"Early machines used odd word sizes, often 36 bits with 6-bit characters. IBM fixed the 8-bit byte for the System/360 to carry both text and packed decimal cleanly, and the industry followed.",
+    foreclosed:"Rival word widths and non-power-of-two byte sizes were foreclosed by the System/360's dominance.",
+    persist:"A byte means exactly eight bits everywhere now, the basic atom of every packet, register, and memory chip." },
 
-  { t:"Teletype newline protocol — CR-LF vs LF", dom:"digital", yr:1964, era:"Teleprinter Era", rgn:["GLOBAL"], typ:"convention",
-    also:"The Windows \\r\\n versus Unix \\n newline schism",
-    origin:"Mechanical teleprinters required separate physical commands to return the ink carriage to the left edge (Carriage Return, \\r) and spin the paper wheel down one row (Line Feed, \\n). Early operating systems carried both control characters over into binary files.",
-    foreclosed:"A single, unified digital text standard was foreclosed at computing's dawn; Multics and Unix compressed it to a single Line Feed, while MS-DOS/Windows preserved both.",
-    persist:"Text files moved between modern machines still break, double-space, or crash string parsers because Windows and Unix systems continue to process line splits based on mechanical teleprinter layouts." },
+  { t:"Teletype newline protocol: CR-LF vs LF", dom:"digital", yr:1964, era:"Teleprinter era", rgn:["GLOBAL"], typ:"convention",
+    also:"Windows \\r\\n vs Unix \\n",
+    origin:"Mechanical teleprinters needed two commands: carriage return (\\r) to slide the print head back, line feed (\\n) to roll the paper up. Early systems wrote both into text files.",
+    foreclosed:"A single newline character was foreclosed early; Unix cut it to one \\n while DOS and Windows kept both.",
+    persist:"Text files still break, double-space, or confuse parsers when they cross between Windows and Unix, decades after the last teleprinter." },
 
-  { t:"Selection of the '@' email locator symbol", dom:"digital", yr:1971, era:"Early Internet", rgn:["GLOBAL"], typ:"convention",
-    also:"Ray Tomlinson's ARPANET formatting fix",
-    origin:"When engineering network email, Ray Tomlinson needed a divider character to sit between a user's name and their host computer. He scanned his Model 33 Teletype keyboard and chose the '@' symbol simply because it was an underutilized key that cleanly meant 'at'.",
-    foreclosed:"Every alternate syntax layout for personal addressing across distributed routing networks was abandoned.",
-    persist:"The '@' symbol has become an unalterable planetary symbol of personal location, burnt into every social media profile, web address, and communications layer on Earth." },
+  { t:"The @ sign in email", dom:"digital", yr:1971, era:"Early internet", rgn:["GLOBAL"], typ:"convention",
+    also:"Ray Tomlinson picked an idle key",
+    origin:"Building network mail in 1971, Ray Tomlinson needed one character to separate a user from their host machine. He picked @ off his Teletype keyboard because it sat idle and already meant 'at'.",
+    foreclosed:"Any other separator, and any address syntax not built around it, was foreclosed the moment the convention spread across ARPANET.",
+    persist:"The @ now marks personal address on every email system and social handle on earth, all because one key on a 1971 keyboard was free." },
 
-  { t:"Null-terminated strings — C language sentinel", dom:"digital", yr:1972, era:"Early Unix", rgn:["GLOBAL"], typ:"architecture",
-    also:"The PDP-11 architecture heritage · \\0 vs length-prefixed arrays",
-    origin:"The creators of the C programming language marked the boundary of variable text strings with a zero byte (\\0) because it saved a single byte of precious memory over storing a dedicated length integer, aligning perfectly with PDP-11 CPU registration.",
-    foreclosed:"Safe, hardware-isolated text operations were foreclosed; verifying string boundaries in C requires a linear scan of every single byte until hitting the sentinel.",
-    persist:"This 1972 micro-optimization remains the structural root cause of half a century of catastrophic buffer overflow vulnerabilities, remote execution exploits, and critical security patches." },
+  { t:"Null-terminated strings: C language sentinel", dom:"digital", yr:1972, era:"Early Unix", rgn:["GLOBAL"], typ:"architecture",
+    also:"the zero byte that still bites",
+    origin:"C marked the end of a text string with a single zero byte rather than storing its length, saving one byte of scarce memory and matching the PDP-11's registers.",
+    foreclosed:"Length-prefixed strings, and the cheap bounds-checking they allow, were foreclosed; C must scan byte by byte to find where a string ends.",
+    persist:"That 1972 byte-saving is the root of half a century of buffer overflows and the remote-execution exploits built on them." },
 
-  { t:"x86 — instruction set that wouldn't die", dom:"digital", yr:1978, era:"Microcomputer era", rgn:["GLOBAL"], typ:"architecture",
+  { t:"x86: instruction set that wouldn't die", dom:"digital", yr:1978, era:"Microcomputer era", rgn:["GLOBAL"], typ:"architecture",
     also:"8086 → IBM PC → forty years of compatibility",
     origin:"Intel's 8086 (1978) won the IBM PC socket in 1981, and DOS-then-Windows binary compatibility turned a chip choice into a planetary standard.",
     foreclosed:"Cleaner architectures were foreclosed for decades because the world's software was already compiled for x86.",
     persist:"Modern CPUs still boot through a 1970s 'real mode' before they become themselves; only now are ARM (Apple Silicon, Graviton) finally prying the lock open." },
 
-  { t:"COBOL — the load-bearing ghost", dom:"digital", yr:1959, era:"Mainframe era", rgn:["GLOBAL"], typ:"language",
+  { t:"COBOL: the load-bearing ghost", dom:"digital", yr:1959, era:"Mainframe era", rgn:["GLOBAL"], typ:"language",
     also:"banks, insurers, governments, the IRS",
     origin:"COBOL was written in 1959 to make business code readable; it then quietly became the foundation of the world's financial and government records.",
     foreclosed:"Migration off it was foreclosed by the cost and risk of rewriting systems no living engineer fully understands.",
     persist:"Trillions of dollars move through COBOL daily; when state unemployment systems buckled in 2020, governments put out public calls for retired COBOL programmers." },
 
-  { t:"IPv4 — the address space that ran out", dom:"digital", yr:1981, era:"Early internet", rgn:["GLOBAL","AFR","IND"], typ:"protocol",
+  { t:"IPv4: the address space that ran out", dom:"digital", yr:1981, era:"Early internet", rgn:["GLOBAL","AFR","IND"], typ:"protocol",
     also:"32 bits · ~4.3 billion addresses",
-    origin:"A 1981 design fixed internet addresses at 32 bits — ample for a research network, fatal for a planetary one.",
+    origin:"A 1981 design fixed internet addresses at 32 bits: ample for a research network, fatal for a planetary one.",
     foreclosed:"A graceful transition was foreclosed; NAT and carrier-grade NAT were bolted on to ration a space that should have been abandoned.",
-    persist:"Early entrants hoard enormous address blocks while latecomers in Asia and Africa, allocated scraps, were pushed onto IPv6 first — the scarcity map mirrors who showed up early." },
+    persist:"Early entrants hoard enormous address blocks while latecomers in Asia and Africa, allocated scraps, were pushed onto IPv6 first. The scarcity map mirrors who showed up early." },
 
   { t:"QWERTY layout standards", dom:"digital", yr:1874, era:"Typewriter era", rgn:["GLOBAL"], typ:"layout", legend:true,
     also:"the layout that outlived its machine",
-    origin:"The QWERTY arrangement was tuned for the mechanics of the 1870s type-bar typewriter and for telegraph transcription — not, as legend says, to slow typists down.",
+    origin:"The QWERTY arrangement was tuned for the mechanics of the 1870s type-bar typewriter and for telegraph transcription, not, as legend says, to slow typists down.",
     foreclosed:"Layouts claimed to be faster were foreclosed once a generation had trained its fingers and every keyboard shipped QWERTY.",
     persist:"You are almost certainly reading this on a layout optimized for a machine that hasn't existed for a century.",
     myth:"Myth: designed to slow you down. Mechanism: built to stop type-bars jamming and to suit Morse operators." },
@@ -601,16 +625,16 @@ const DATA = [
   { t:"Regional keyboard layouts", dom:"digital", yr:1907, era:"20th c.", rgn:["EUR","KOR"], typ:"layout",
     also:"AZERTY · QWERTZ · Turkish-F · Dubeolsik",
     origin:"Each language community froze its own layout early; France got AZERTY, the German world QWERTZ, Korea the Dubeolsik arrangement.",
-    foreclosed:"Demonstrably more efficient designs — the Turkish F-keyboard, the Korean Sebeolsik — were foreclosed by the layout people already knew.",
+    foreclosed:"Demonstrably more efficient designs (the Turkish F-keyboard, the Korean Sebeolsik) were foreclosed by the layout people already knew.",
     persist:"Turkey legislated an optimized keyboard and still lost to QWERTY habit; Korea's faster Sebeolsik remains a connoisseur's choice while Dubeolsik rules." },
 
   { t:"ASCII, code pages, and Han unification", dom:"digital", yr:1963, era:"Early computing", rgn:["GLOBAL","CHN","JPN","KOR"], typ:"encoding",
     also:"7-bit English → a tower of incompatible encodings",
-    origin:"ASCII fixed text as 7-bit American English in 1963; every other writing system then improvised its own incompatible code page — Shift-JIS, EUC-KR, GB, Big5.",
+    origin:"ASCII fixed text as 7-bit American English in 1963; every other writing system then improvised its own incompatible code page: Shift-JIS, EUC-KR, GB, Big5.",
     foreclosed:"A born-universal text standard was foreclosed; decades of garbled 'mojibake' followed wherever encodings collided.",
-    persist:"Unicode finally unified it — but its decision to merge visually-similar Chinese, Japanese, and Korean characters into shared code points still sparks the 'Han unification' grievance today." },
+    persist:"Unicode finally unified it, but its decision to merge visually-similar Chinese, Japanese, and Korean characters into shared code points still sparks the 'Han unification' grievance today." },
 
-  { t:"The /usr split — a full disk in 1971", dom:"digital", yr:1971, era:"Early Unix", rgn:["GLOBAL"], typ:"convention",
+  { t:"The /usr split: a full disk in 1971", dom:"digital", yr:1971, era:"Early Unix", rgn:["GLOBAL"], typ:"convention",
     also:"why every Linux box has /usr",
     origin:"Unix's authors filled their first disk and spilled the overflow onto a second one mounted at /usr. That accident became the filesystem layout.",
     foreclosed:"A clean, designed directory hierarchy was foreclosed; the historical split calcified into a standard everyone copied.",
@@ -620,29 +644,29 @@ const DATA = [
     also:"CON, PRN, NUL · A:, C: · MAX_PATH",
     origin:"DOS inherited device names and an A:/C: drive scheme from 1970s CP/M and the floppy-disk PCs of the early 1980s.",
     foreclosed:"A clean namespace was foreclosed for the sake of running the previous decade's software unchanged.",
-    persist:"You still cannot name a file 'CON' on Windows because of a teletype device convention older than the PC — and the C: drive is named for floppies that are gone." },
+    persist:"You still cannot name a file 'CON' on Windows because of a teletype device convention older than the PC, and the C: drive is named for floppies that are gone." },
 
   { t:"The Year 2038 problem", dom:"digital", yr:1970, era:"Early Unix", rgn:["GLOBAL"], typ:"convention",
     also:"32-bit time, counting from 1970",
-    origin:"Unix counts time as seconds since 1 January 1970 in a 32-bit signed integer — a choice made when 2038 was unimaginably far away.",
+    origin:"Unix counts time as seconds since 1 January 1970 in a 32-bit signed integer, a choice made when 2038 was unimaginably far away.",
     foreclosed:"A future-proof time representation was foreclosed by the memory economics of the era.",
     persist:"On 19 January 2038 that counter overflows. Embedded systems still being installed today are quietly laying down a fresh layer of the same fossil." },
 
-  { t:"Two-digit years — the Y2K stratum", dom:"digital", yr:1965, era:"Mainframe era", rgn:["GLOBAL"], typ:"convention",
+  { t:"Two-digit years: the Y2K stratum", dom:"digital", yr:1965, era:"Mainframe era", rgn:["GLOBAL"], typ:"convention",
     also:"storing '99' to save a byte",
     origin:"When memory was measured in expensive kilobytes, programmers stored years as two digits. The saving was real; the century was assumed.",
     foreclosed:"A robust date format was foreclosed by a rational cost decision that simply outlived its assumptions.",
     persist:"Excavating and fixing that one shortcut cost an estimated hundreds of billions of dollars worldwide in the run-up to 2000." },
 
-  { t:"JavaScript — ten days, then forever", dom:"digital", yr:1995, era:"Early web", rgn:["GLOBAL"], typ:"language",
+  { t:"JavaScript: ten days, then forever", dom:"digital", yr:1995, era:"Early web", rgn:["GLOBAL"], typ:"language",
     also:"the browser's only native language",
     origin:"JavaScript was sketched in about ten days in 1995 and named to ride Java's coattails for marketing. Then it became the one language every browser ran.",
     foreclosed:"A more considered web language was foreclosed; alternatives could only ever compile down to JavaScript.",
     persist:"The entire front end of the internet rests on a fortnight's work from 1995; WebAssembly exists largely to find a way around it." },
 
-  { t:"SMTP email — trust by default", dom:"digital", yr:1982, era:"Early internet", rgn:["GLOBAL"], typ:"protocol",
+  { t:"SMTP email: trust by default", dom:"digital", yr:1982, era:"Early internet", rgn:["GLOBAL"], typ:"protocol",
     also:"a mail protocol with no authentication",
-    origin:"SMTP was designed in 1982 for a small, trusting network where anyone could claim to be anyone — and there was no reason to lie.",
+    origin:"SMTP was designed in 1982 for a small, trusting network where anyone could claim to be anyone, and there was no reason to lie.",
     foreclosed:"Built-in sender authentication was foreclosed; the protocol assumed good faith at the core.",
     persist:"Spam, phishing, and the whole SPF/DKIM/DMARC apparatus are scaffolding bolted onto a protocol that still, underneath, takes your word for who you are." },
 
@@ -656,7 +680,7 @@ const DATA = [
     also:"a mandated cipher froze a nation on one browser",
     origin:"A 1999 rule effectively required a domestic encryption scheme (SEED) for online transactions, delivered through Internet Explorer ActiveX plugins.",
     foreclosed:"Browser choice was foreclosed for an entire country; banking and shopping demanded IE and a stack of mandatory security plugins.",
-    persist:"Koreans were tethered to obsolete Internet Explorer for roughly two decades — a security rule from the dial-up era that took dedicated legislation to unwind." },
+    persist:"Koreans were tethered to obsolete Internet Explorer for roughly two decades, a security rule from the dial-up era that took dedicated legislation to unwind." },
 
   { t:"Japan's fax and hanko persistence", dom:"digital", yr:1980, era:"20th c.", rgn:["JPN"], typ:"convention",
     also:"the fax machine and the personal seal",
@@ -664,74 +688,79 @@ const DATA = [
     foreclosed:"Paperless workflows were foreclosed by institutions that treated the physical seal and the faxed page as the authoritative original.",
     persist:"In 2020, public-health offices were faxing infection counts; a national campaign to abolish the hanko requirement became actual government policy." },
 
-  { t:"M-Pesa — leapfrogging the bank branch", dom:"digital", yr:2007, era:"21st c.", rgn:["AFR"], typ:"network",
+  { t:"M-Pesa: leapfrogging the bank branch", dom:"digital", yr:2007, era:"21st c.", rgn:["AFR"], typ:"network",
     also:"mobile money on a feature phone, Kenya",
     origin:"With bank branches scarce, Kenya's M-Pesa put money transfer on plain SMS/USSD feature phones in 2007 and an economy adopted it overnight.",
-    foreclosed:"The Western card-and-branch banking stack was foreclosed — skipped entirely rather than built.",
+    foreclosed:"The Western card-and-branch banking stack was foreclosed, skipped entirely rather than built.",
     persist:"A huge share of Kenyan GDP now flows over text-message rails; the leapfrogged foundation is itself now the entrenched layer that smartphones must accommodate." },
 
-  { t:"Date format chaos — MM/DD vs DD/MM vs ISO", dom:"digital", yr:1900, era:"20th c.", rgn:["GLOBAL","AMER","CAN"], typ:"convention",
+  { t:"Date format chaos: MM/DD vs DD/MM vs ISO", dom:"digital", yr:1900, era:"20th c.", rgn:["GLOBAL","AMER","CAN"], typ:"convention",
     also:"03/04/05 means three different days",
     origin:"The US wrote dates month-first, most of the world day-first, and ISO 8601 later proposed the only unambiguous order, year-first.",
     foreclosed:"A single global date order was foreclosed; software and forms still guess at which convention a user means.",
-    persist:"Canada manages to use all three in daily life, making a bare numeric date genuinely ambiguous on official documents — a convention collision with no fix in sight." },
+    persist:"Canada manages to use all three in daily life, making a bare numeric date genuinely ambiguous on official documents, a convention collision with no fix in sight." },
 
   { t:"Skeuomorphic UI fossils", dom:"digital", yr:1983, era:"GUI era", rgn:["GLOBAL"], typ:"convention",
     also:"the floppy 'save' icon · Cc · 'hang up'",
     origin:"Early interfaces borrowed pictures of physical objects so people could recognize what a control did.",
     foreclosed:"Native digital metaphors were foreclosed once the borrowed icons became universally legible.",
-    persist:"We still 'save' to a floppy disk, 'Cc' a carbon copy, and 'hang up' a call — performing the shapes of hardware that most users have never touched." },
+    persist:"We still 'save' to a floppy disk, 'Cc' a carbon copy, and 'hang up' a call, performing the shapes of hardware that most users have never touched." },
 
   { t:"The 80-column line formatting rule", dom:"digital", yr:1928, era:"Punch-card era", rgn:["GLOBAL"], typ:"convention", legend:true,
     also:"from the punch card to your style guide",
     origin:"IBM's 1928 punch card held 80 columns; terminals copied the width; code editors copied the terminals.",
     foreclosed:"A wider default was foreclosed as 80 characters hardened from a card's capacity into a cultural rule.",
-    persist:"Style guides still cap source lines at 80 characters — a limit inherited from a piece of cardboard.",
+    persist:"Style guides still cap source lines at 80 characters, a limit inherited from a piece of cardboard.",
     myth:"Legend: the card's size was chosen to match an 1880s dollar bill so Treasury storage could be reused. Mechanism: 80 columns of round-then-rectangular holes, fixed by IBM." },
 
   { t:"USB orientation & charger mandate", dom:"digital", yr:1996, era:"21st c.", rgn:["GLOBAL","EUR"], typ:"standard",
     also:"the un-reversible plug · Lightning vs USB-C",
     origin:"USB-A shipped without a clear top, so it never goes in right the first time; Apple meanwhile entrenched its own proprietary connector.",
     foreclosed:"A clean, universal, reversible standard was foreclosed by a billion devices already wired for the old shapes.",
-    persist:"It took European regulation, in force from 2024, to pry the phone world onto a single USB-C port — a lock-in broken by law, not by markets." },
+    persist:"It took European regulation, in force from 2024, to pry the phone world onto a single USB-C port, a lock-in broken by law, not by markets." },
 
   /* ============ INSTITUTIONAL ============ */
-  { t:"The school summer vacation schedule", dom:"institutional", yr:1840, era:"Urban Industrialization", rgn:["GLOBAL","AMER"], typ:"convention", legend:true,
-    also:"The mass emptying of schoolrooms in July and August",
-    origin:"As 19th-century western centers grew rapidly, education pioneers standardized highly fractured agrarian terms. They closed urban brick schools during July and August because high density made classrooms unbearable heat traps, and elite families fled the urban centers for summer breaks.",
-    foreclosed:"A continuous, balanced year-round learning framework was completely foreclosed, normalizing a structural knowledge retention dip ('summer slide').",
-    persist:"Primary and secondary school institutions globally still shut down completely for two months out of respect for an early 19th-century un-airconditioned urban cooling constraint.",
-    myth:"Myth: structured to let farming children out for the planting and harvesting seasons (the bulk of agricultural harvest occurs in autumn). Mechanism: unventilated urban architectural heat and high-society vacation cycles." },
+  { t:"The Carnegie Unit: seat-time as credit", dom:"institutional", yr:1906, era:"20th c.", rgn:["AMER"], typ:"policy",
+    also:"a pension formula that became the transcript",
+    origin:"In 1906 a Carnegie foundation, deciding which colleges' professors qualified for pensions, needed to define a standard 'unit' of schooling, and settled on hours spent in a seat.",
+    foreclosed:"Measuring learning by mastery rather than time was foreclosed; the seat-hour became the unit of the transcript.",
+    persist:"US high schools and colleges still award credit by hours logged in a classroom, a standard built to sort a steel fortune's pension list." },
+  { t:"The summer vacation schedule", dom:"institutional", yr:1840, era:"19th c.", rgn:["AMER"], typ:"convention", legend:true,
+    also:"empty schoolrooms every July and August",
+    origin:"As 19th-century cities grew, reformers merged the patchwork of local terms and closed the brick schoolhouses through July and August, when packed classrooms became heat traps and better-off families left town.",
+    foreclosed:"Year-round schooling was foreclosed, and with it a fix for the 'summer slide' in what children retain.",
+    persist:"American schools still empty out for two months in deference to a pre-air-conditioning heat problem and a wealthy family's vacation calendar.",
+    myth:"Myth: a break for farm children at harvest (most harvest is in autumn). Mechanism: unventilated urban heat and elite summer travel." },
 
   { t:"Delaware's legal corporate dominance", dom:"institutional", yr:1899, era:"Gilded Age", rgn:["AMER"], typ:"policy",
-    also:"Why most of the Fortune 500 legally resides in a tiny mid-Atlantic state",
-    origin:"To successfully siphon corporate franchise tax revenue away from New Jersey, Delaware passed its General Corporation Law in 1899 and developed a dedicated Court of Chancery that evaluates corporate disputes via specialized judges rather than juries.",
-    foreclosed:"A geographically distributed legal environment for interstate commerce was foreclosed, compelling alternate states to mirror Delaware statutes or abandon business integration.",
-    persist:"Over 60% of Fortune 500 corporations remain legally anchored to Wilmington, Delaware, balancing multi-billion dollar operations on a century-old bed of hyper-predictable business case law." },
+    also:"why the Fortune 500 lives in a tiny state",
+    origin:"To pull corporate franchise fees away from New Jersey, Delaware wrote a permissive General Corporation Law in 1899 and built a Court of Chancery where expert judges, not juries, settle business disputes.",
+    foreclosed:"A spread-out map of competing corporate homes was foreclosed; other states had to copy Delaware or lose the incorporations.",
+    persist:"Most of the Fortune 500 is still chartered in Wilmington, running on a century-deep bed of predictable case law." },
 
-  { t:"Social Security Number as structural identity", dom:"institutional", yr:1936, era:"New Deal Era", rgn:["AMER"], typ:"policy",
-    also:"An accounting ledger that became a skeleton national ID",
-    origin:"The US federal government issued the 9-digit SSN exclusively to track individual worker retirement payouts, going so far as printing 'Not for Identification' on early cards.",
-    foreclosed:"The implementation of a modern, cryptographically secure national digital identity card was foreclosed due to recurring privacy-advocate resistance and administrative gridlock.",
-    persist:"An unauthenticated, easily stolen 9-digit numeric string serves as the foundational key for American banking, credit ratings, medical verification, and taxation systems." },
+  { t:"The Social Security number as ID", dom:"institutional", yr:1936, era:"New Deal era", rgn:["AMER"], typ:"policy",
+    also:"a payroll ledger that became a national ID",
+    origin:"The 9-digit number was issued in 1936 only to track workers' retirement contributions; early cards were even printed 'Not for Identification'.",
+    foreclosed:"A secure national identity system was foreclosed, blocked for decades by privacy resistance and inertia.",
+    persist:"An unauthenticated 9-digit number, trivially stolen, is now the master key to American credit, banking, taxes, and medical records." },
 
   { t:"The US healthcare–employer link", dom:"institutional", yr:1943, era:"WWII", rgn:["AMER"], typ:"policy",
     also:"insurance bolted to the job",
-    origin:"Wartime wage caps stopped employers competing on pay, so they offered health insurance instead — and a tax ruling made that benefit tax-free.",
+    origin:"Wartime wage caps stopped employers competing on pay, so they offered health insurance instead, and a tax ruling made that benefit tax-free.",
     foreclosed:"Universal or individual coverage was foreclosed; the country's health system organized itself around the workplace by accident.",
-    persist:"Americans uniquely get insurance through their jobs and lose it when they leave — a permanent structural feature traceable to a 1940s wage freeze." },
+    persist:"Americans uniquely get insurance through their jobs and lose it when they leave, a permanent structural feature traceable to a 1940s wage freeze." },
 
   { t:"The dollar's primacy", dom:"institutional", yr:1944, era:"Postwar", rgn:["GLOBAL","AMER"], typ:"policy",
     also:"Bretton Woods, and what survived 1971",
     origin:"The 1944 Bretton Woods order made the dollar the anchor of global finance, backed by gold.",
     foreclosed:"A multipolar reserve system was foreclosed by the depth and liquidity the dollar accumulated.",
-    persist:"Nixon cut the gold link in 1971 — and the dollar's reserve role only deepened, because no rival market is liquid enough to switch to. Network effects outlived the mechanism that created them." },
+    persist:"Nixon cut the gold link in 1971, and the dollar's reserve role only deepened, because no rival market is liquid enough to switch to. Network effects outlived the mechanism that created them." },
 
-  { t:"SWIFT — messaging as infrastructure", dom:"institutional", yr:1973, era:"20th c.", rgn:["GLOBAL"], typ:"network",
+  { t:"SWIFT: messaging as infrastructure", dom:"institutional", yr:1973, era:"20th c.", rgn:["GLOBAL"], typ:"network",
     also:"a 1970s bank-message standard, now a weapon",
     origin:"SWIFT was built in 1973 as a shared way for banks to message each other about payments.",
     foreclosed:"Competing rails were foreclosed once nearly every bank in the world joined the same network.",
-    persist:"A cooperative messaging format became geopolitical infrastructure — and the reason rival systems like China's CIPS and Russia's SPFS now exist is precisely to escape it." },
+    persist:"A cooperative messaging format became geopolitical infrastructure, and the reason rival systems like China's CIPS and Russia's SPFS now exist is precisely to escape it." },
 
   { t:"America's slow payment rails", dom:"institutional", yr:1974, era:"20th c.", rgn:["AMER","IND","LATAM"], typ:"network",
     also:"batch ACH vs instant UPI / PIX",
@@ -743,7 +772,7 @@ const DATA = [
     also:"which empire arrived first",
     origin:"Britain exported case-based common law; France exported the codified Napoleonic civil law; later modernizers (Japan, Korea) borrowed the German civil tradition.",
     foreclosed:"A society's choice of legal logic was largely foreclosed by which power colonized or advised it.",
-    persist:"Quebec and Louisiana are civil-law islands inside common-law countries; South Africa runs a Roman-Dutch hybrid — each a fossil of who got there first." },
+    persist:"Quebec and Louisiana are civil-law islands inside common-law countries; South Africa runs a Roman-Dutch hybrid, each a fossil of who got there first." },
 
   { t:"The CFA franc", dom:"institutional", yr:1945, era:"Late colonial", rgn:["AFR"], typ:"policy",
     also:"a currency pegged to the colonizer",
@@ -754,14 +783,14 @@ const DATA = [
   { t:"Return-free filing, foreclosed", dom:"institutional", yr:1955, era:"20th c.", rgn:["AMER"], typ:"policy",
     also:"why Americans still 'do their taxes'",
     origin:"Most rich countries pre-fill or simply finalize taxes for ordinary wage-earners; the US built its system around the taxpayer doing the work.",
-    foreclosed:"Government-prepared returns were foreclosed in the US — and kept foreclosed by tax-prep industry lobbying.",
+    foreclosed:"Government-prepared returns were foreclosed in the US, and kept foreclosed by tax-prep industry lobbying.",
     persist:"In Japan and much of Europe, most people never file at all; in America, an annual ritual of forms persists by design and by rent-seeking." },
 
   { t:"Daylight Saving Time", dom:"institutional", yr:1916, era:"WWI", rgn:["GLOBAL"], typ:"policy",
     also:"a wartime measure that never left",
     origin:"Countries shifted the clocks in the World Wars to save fuel and light, then kept doing it out of habit and inertia.",
     foreclosed:"A stable, single year-round time was foreclosed; the biannual switch entrenched itself in law and software.",
-    persist:"Arizona and Hawaii simply opted out; the EU voted to abolish the change in 2019 and has still not managed to — the clock-shift outlives every reason for it." },
+    persist:"Arizona and Hawaii simply opted out; the EU voted to abolish the change in 2019 and has still not managed to. The clock-shift outlives every reason for it." },
 
   { t:"The Electoral College", dom:"institutional", yr:1787, era:"Founding era", rgn:["AMER"], typ:"policy",
     also:"an 18th-century compromise, frozen in",
@@ -772,7 +801,7 @@ const DATA = [
 
 /* ---------- Render & filter ---------- */
 const DOM_LABEL = {physical:"Physical layer", digital:"Digital layer", institutional:"Institutional layer"};
-const RGN_LABEL = {GLOBAL:"Global",AMER:"Americas",CAN:"Canada",LATAM:"Lat. Am.",EUR:"Europe",JPN:"Japan",KOR:"Korea",CHN:"China",IND:"India",AFR:"Africa",EURASIA:"Eurasia",OCE:"Oceania"};
+const RGN_LABEL = {GLOBAL:"Global",AMER:"Americas",CAN:"Canada",LATAM:"Lat. Am.",EUR:"Europe",JPN:"Japan",KOR:"Korea",CHN:"China",IND:"India",AFR:"Africa",MENA:"Middle East",EURASIA:"Eurasia",OCE:"Oceania"};
 
 const state = { dom:"all", rgn:"all", q:"" };
 
